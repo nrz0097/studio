@@ -28,7 +28,7 @@ const translations = {
     navGallery: "Gallery",
     navLocation: "Location",
     navOrder: "Order",
-    heroEst: "Established 2023",
+    heroEst: "Established 2024",
     heroHeadline: "Step Into\nThe Static",
     heroDesc: "No need to dress up, no need to keep up appearances. Here is a place to pause for a moment from the world's noise. Sit down, enjoy your coffee, and just be yourself.",
     heroCaffeineBoost: "Get your caffeine boost",
@@ -46,7 +46,7 @@ const translations = {
     menuShowMore: "Expand Menu",
     menuShowLess: "Collapse Menu",
     deliveryTitle: "Bring the glitch home",
-    deliveryHours: "Daily 09:00 — 21:00",
+    deliveryHours: "Daily 15:00 — 23:00",
     bottleTitle: "Bottle Series",
     bottleDesc: "Enjoy Glitch Coffee anywhere. Pre-order now for delivery every Monday & Thursday. Available in 250ml & 1 Liter sizes.",
     joinPO: "Join the PO",
@@ -59,14 +59,14 @@ const translations = {
     contactEvent: "Contact Event Manager",
     commonQueries: "Common Queries",
     faqOpTitle: "Operational Hours",
-    faqOpContent: "Monday - Friday: 09:00 - 21:00\nSaturday - Sunday: 08:00 - 22:00",
+    faqOpContent: "Tuesday - Sunday: 15:00 - 23:00",
     faqOrderTitle: "Order Methods",
     faqOrderContent: "Dine-in, Takeaway, WhatsApp Delivery, GoFood, & ShopeeFood.",
     faqSeatTitle: "Seating Capacity",
     faqSeatContent: "We have a spacious semi-outdoor area, perfect for hanging out (30-40 pax).",
     footerHeadline: "THIS IS YOUR GLITCH MOMENT.",
-    footerAddress: "Jl. Senopati No. 42\nJakarta Selatan",
-    footerRights: "© 2024 GLITCH COFFEE ROASTERY. ALL RIGHTS RESERVED."
+    footerAddress: "Jl. Mulawarman No. 170, Manggar\nBalikpapan Timur",
+    footerRights: "© 2026 GLITCH COFFEE. ALL RIGHTS RESERVED."
   },
   id: {
     navPhilosophy: "Filosofi",
@@ -74,7 +74,7 @@ const translations = {
     navGallery: "Galeri",
     navLocation: "Lokasi",
     navOrder: "Pesan",
-    heroEst: "Sejak 2023",
+    heroEst: "Sejak 2024",
     heroHeadline: "Step Into\nThe Static",
     heroDesc: "Gak perlu dandan rapi, gak perlu jaga imej. Di sini tempatnya buat jeda sebentar dari bisingnya dunia. Duduk, nikmatin kopi, dan jadi diri sendiri aja.",
     heroCaffeineBoost: "Dapatkan asupan kafeinmu",
@@ -92,7 +92,7 @@ const translations = {
     menuShowMore: "Lihat Semua",
     menuShowLess: "Tutup Menu",
     deliveryTitle: "Bawa pulang glitch-mu",
-    deliveryHours: "Setiap Hari 09:00 — 21:00",
+    deliveryHours: "Setiap Hari 15:00 — 23:00",
     bottleTitle: "Bottle Series",
     bottleDesc: "Nikmatin Glitch Coffee di mana aja. Pre-order sekarang untuk pengiriman setiap hari Senin & Kamis. Tersedia dalam ukuran 250ml & 1 Liter.",
     joinPO: "Ikut PO",
@@ -105,14 +105,14 @@ const translations = {
     contactEvent: "Hubungi Manajer Event",
     commonQueries: "Pertanyaan Umum",
     faqOpTitle: "Jam Operasional",
-    faqOpContent: "Senin - Jumat: 09.00 - 21.00\nSabtu - Minggu: 08.00 - 22.00",
+    faqOpContent: "Selasa - Minggu: 15.00 - 23.00",
     faqOrderTitle: "Metode Pemesanan",
     faqOrderContent: "Dine-in, Takeaway, WhatsApp Delivery, GoFood, & ShopeeFood.",
     faqSeatTitle: "Kapasitas Tempat Duduk",
     faqSeatContent: "Kami punya area semi-outdoor yang cukup luas, cocok buat nongkrong rame-rame (30-40 pax).",
     footerHeadline: "INI MOMEN GLITCH KAMU.",
-    footerAddress: "Jl. Senopati No. 42\nJakarta Selatan",
-    footerRights: "© 2024 GLITCH COFFEE ROASTERY. HAK CIPTA DILINDUNGI."
+    footerAddress: "Jl. Mulawarman no. 170, manggar\nBalikpapan Timur",
+    footerRights: "© 2026 GLITCH COFFEE. HAK CIPTA DILINDUNGI."
   }
 };
 
@@ -202,7 +202,7 @@ export default function GlitchCoffeeLanding() {
       <header className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md z-50 grid-line-h">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12">
           <div className="col-span-4 p-6 grid-line-v flex items-center justify-between md:justify-start">
-            <a href="#hero" className="flex items-center grayscale hover:grayscale-0 transition-all h-full">
+            <a href="#hero" className="flex items-center h-full">
               <Image 
                 src="/logo.png" 
                 alt="Glitch Coffee Logo"
@@ -211,7 +211,7 @@ export default function GlitchCoffeeLanding() {
                 className="h-8 w-auto md:h-10 object-contain"
                 priority
                 onError={(e) => {
-                   (e.target as any).src = images['glitch-logo']?.imageUrl || "https://picsum.photos/seed/glitch-logo/300/100";
+                   (e.target as any).src = "https://picsum.photos/seed/glitch-logo/300/100";
                 }}
               />
             </a>
@@ -316,11 +316,11 @@ export default function GlitchCoffeeLanding() {
         <div className="col-span-12 md:col-span-6 p-0 grid-line-v">
           <div className="p-8 md:p-16 grid-line-h">
             <span className="font-code text-xs text-muted-foreground uppercase mb-4 block">{t.menuSig1}</span>
-            <h4 className="font-headline font-black text-4xl uppercase mb-4">Butterscotch Glitch</h4>
+            <h4 className="font-headline font-black text-4xl uppercase mb-4">Buttersync</h4>
             <p className="font-body text-muted-foreground mb-8">
               {t.menuDesc1}
             </p>
-            <span className="font-code text-xl">IDR 38.000</span>
+            <span className="font-code text-xl">IDR 22.000</span>
           </div>
           <div className="relative aspect-video overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
             <Image 
@@ -335,11 +335,11 @@ export default function GlitchCoffeeLanding() {
         <div className="col-span-12 md:col-span-6 p-0">
           <div className="p-8 md:p-16 grid-line-h">
             <span className="font-code text-xs text-muted-foreground uppercase mb-4 block">{t.menuSig2}</span>
-            <h4 className="font-headline font-black text-4xl uppercase mb-4">Static Black</h4>
+            <h4 className="font-headline font-black text-4xl uppercase mb-4">Americano</h4>
             <p className="font-body text-muted-foreground mb-8">
               {t.menuDesc2}
             </p>
-            <span className="font-code text-xl">IDR 32.000</span>
+            <span className="font-code text-xl">IDR 18.000</span>
           </div>
           <div className="relative aspect-video overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
             <Image 
@@ -466,9 +466,6 @@ export default function GlitchCoffeeLanding() {
             {t.eventDesc}
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button variant="outline" className="rounded-none font-code uppercase h-12 transition-colors">
-              {t.inquiryForm}
-            </Button>
             <Button variant="ghost" className="rounded-none font-code uppercase h-12 flex items-center gap-2 transition-colors">
               <PhoneCall className="w-4 h-4" /> {t.contactEvent}
             </Button>
@@ -481,7 +478,7 @@ export default function GlitchCoffeeLanding() {
         <div className="col-span-12 md:col-span-7 grid-line-v min-h-[300px] md:min-h-[400px]">
           <div className="relative w-full h-full grayscale invert contrast-125">
              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d106.8!3d-6.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTInMDAuMCJTIDEwNsKwNDgnMDAuMCJF!5e0!3m2!1sen!2sid!4v1600000000000!5m2!1sen!2sid" 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15951.7!2d116.948259!3d-1.236625!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMTQnMTIuMCJTIDExNsKwNTYnNTMuNyJF!5e0!3m2!1sen!2sid!4v1600000000000!5m2!1sen!2sid" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, minHeight: '300px' }} 
@@ -535,7 +532,6 @@ export default function GlitchCoffeeLanding() {
                 <span className="text-muted-foreground">Social</span>
                 <div className="flex gap-6">
                   <a href="#" className="hover:underline">Instagram</a>
-                  <a href="#" className="hover:underline">TikTok</a>
                 </div>
               </div>
             </div>
