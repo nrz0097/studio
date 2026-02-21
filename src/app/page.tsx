@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from "react";
@@ -7,9 +8,9 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
-  AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  AccordionContent,
 } from "@/components/ui/accordion";
 import {
   Sheet,
@@ -85,6 +86,7 @@ const translations = {
     menuSig1: "Signature — 01",
     menuSig2: "Signature — 02",
     menuDesc1: "Pelarian manis dan asin khas kami. Butterscotch kaya rasa berpadu dengan espresso yang diekstrak sempurna, diakhiri dengan sentuhan garam laut.",
+    menuSig2: "Signature — 02",
     menuDesc2: "Murni, tanpa campuran, berani. Biji kopi single origin dipanggang untuk menonjolkan keasaman kompleks dan hasil akhir yang bersih. Untuk para pemurni.",
     menuFull: "The Full Static",
     menuEssentials: "Esensi Menu",
@@ -201,7 +203,14 @@ export default function GlitchCoffeeLanding() {
       <header className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md z-50 grid-line-h">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12">
           <div className="col-span-4 p-6 grid-line-v flex items-center justify-between md:justify-start">
-            <h1 className="font-headline font-black text-2xl tracking-tighter uppercase">Glitch Coffee</h1>
+            <a href="#hero" className="relative h-10 w-32 grayscale hover:grayscale-0 transition-all">
+              <Image 
+                src={images['glitch-logo']?.imageUrl || "https://picsum.photos/seed/glitch-logo/300/100"} 
+                alt="Glitch Coffee Logo"
+                fill
+                className="object-contain"
+              />
+            </a>
             <div className="md:hidden flex items-center gap-4">
               <Button 
                 variant="ghost" 
@@ -256,12 +265,12 @@ export default function GlitchCoffeeLanding() {
             </p>
             <div className="flex flex-wrap gap-4">
               <a href="#delivery">
-                <Button variant="outline" className="rounded-none border-white hover:bg-white hover:text-black font-code uppercase px-8 h-12">
+                <Button variant="outline" className="rounded-none border-white hover:bg-white hover:text-black font-code uppercase px-8 h-12 transition-colors">
                   <Coffee className="mr-2 h-4 w-4" /> {t.heroCaffeineBoost}
                 </Button>
               </a>
               <a href="#location">
-                <Button variant="secondary" className="rounded-none font-code uppercase px-8 h-12">
+                <Button variant="secondary" className="rounded-none font-code uppercase px-8 h-12 transition-colors">
                   <MapPin className="mr-2 h-4 w-4" /> {t.checkLocation}
                 </Button>
               </a>
@@ -278,7 +287,7 @@ export default function GlitchCoffeeLanding() {
               src={images['hero-coffee']?.imageUrl || "https://picsum.photos/seed/hero/800/800"} 
               alt="Coffee" 
               fill 
-              className="object-cover hover:scale-110 transition-transform duration-700 hover-glitch"
+              className="object-cover hover:scale-110 transition-transform duration-700"
               data-ai-hint="espresso pour"
             />
           </motion.div>
@@ -314,7 +323,7 @@ export default function GlitchCoffeeLanding() {
               src={images['butterscotch-glitch']?.imageUrl || "https://picsum.photos/seed/latte/800/450"} 
               alt="Butterscotch Glitch" 
               fill 
-              className="object-cover hover:scale-105 transition-transform duration-500 hover-glitch" 
+              className="object-cover hover:scale-105 transition-transform duration-500" 
               data-ai-hint="iced latte"
             />
           </div>
@@ -333,7 +342,7 @@ export default function GlitchCoffeeLanding() {
               src={images['static-black']?.imageUrl || "https://picsum.photos/seed/black/800/450"} 
               alt="Static Black" 
               fill 
-              className="object-cover hover:scale-105 transition-transform duration-500 hover-glitch"
+              className="object-cover hover:scale-105 transition-transform duration-500"
               data-ai-hint="black coffee"
             />
           </div>
@@ -350,7 +359,7 @@ export default function GlitchCoffeeLanding() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
             {menuData.map((cat, catIdx) => (
-              <div key={catIdx} className={`flex flex-col gap-4 ${!isMenuExpanded && catIdx > 0 ? 'hidden md:flex' : 'flex'}`}>
+              <div key={catIdx} className="flex flex-col gap-4">
                 <h4 className="font-headline text-lg text-muted-foreground border-b border-[#333] pb-2 mb-2">{cat.category}</h4>
                 <div className="flex flex-col gap-1">
                   {(isMenuExpanded ? cat.items : cat.items.slice(0, 3)).map((item, idx) => (
@@ -384,14 +393,14 @@ export default function GlitchCoffeeLanding() {
             <h3 className="font-headline font-black text-4xl uppercase mb-8">{t.deliveryTitle}</h3>
             <div className="flex flex-col gap-4">
               <div className="flex gap-4">
-                <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 border-[#333]">
+                <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 border-[#333] transition-colors">
                   GoFood
                 </Button>
-                <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 border-[#333]">
+                <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 border-[#333] transition-colors">
                   ShopeeFood
                 </Button>
               </div>
-              <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-[#333]">
+              <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-[#333] transition-colors">
                 <MessageCircle className="mr-2 h-4 w-4" /> {t.orderWhatsApp}
               </Button>
             </div>
@@ -406,7 +415,7 @@ export default function GlitchCoffeeLanding() {
             <p className="font-body mb-8">
               {t.bottleDesc}
             </p>
-            <Button variant="default" className="bg-black text-white hover:bg-zinc-800 rounded-none font-code uppercase w-full h-14">
+            <Button variant="default" className="bg-black text-white hover:bg-zinc-800 rounded-none font-code uppercase w-full h-14 transition-colors">
               {t.joinPO}
             </Button>
           </div>
@@ -434,7 +443,7 @@ export default function GlitchCoffeeLanding() {
                   src={images[id]?.imageUrl || `https://picsum.photos/seed/${id}/600/600`} 
                   alt={`Gallery ${idx}`} 
                   fill 
-                  className="object-cover hover-glitch" 
+                  className="object-cover" 
                   data-ai-hint={images[id]?.imageHint || "coffee vibe"}
                 />
               </motion.div>
@@ -453,10 +462,10 @@ export default function GlitchCoffeeLanding() {
             {t.eventDesc}
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button variant="outline" className="rounded-none font-code uppercase h-12">
+            <Button variant="outline" className="rounded-none font-code uppercase h-12 transition-colors">
               {t.inquiryForm}
             </Button>
-            <Button variant="ghost" className="rounded-none font-code uppercase h-12 flex items-center gap-2">
+            <Button variant="ghost" className="rounded-none font-code uppercase h-12 flex items-center gap-2 transition-colors">
               <PhoneCall className="w-4 h-4" /> {t.contactEvent}
             </Button>
           </div>
@@ -510,7 +519,7 @@ export default function GlitchCoffeeLanding() {
       <footer className="w-full bg-black text-white pt-24 pb-12 border-t border-[#333]">
         <div className="max-w-[1440px] mx-auto px-8 md:px-16">
           <div className="flex flex-col items-center mb-16">
-            <h2 className="font-headline font-black text-lg md:text-xl tracking-tighter uppercase leading-none mb-12 text-center text-muted-foreground opacity-50">
+            <h2 className="font-headline font-black text-sm md:text-base tracking-tighter uppercase leading-none mb-12 text-center text-muted-foreground opacity-50">
               {t.footerHeadline}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-4xl">
