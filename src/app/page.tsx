@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, ChevronDown, ChevronUp, Bike } from "lucide-react";
+import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, Menu, ChevronDown, ChevronUp, Bike } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -207,8 +207,8 @@ export default function GlitchCoffeeLanding() {
     <>
       <a href="#philosophy" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navPhilosophy}</a>
       <a href="#menu" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navMenu}</a>
-      <a href="#delivery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight flex items-center gap-1">
-        <ShoppingCart className="w-3 h-3" /> {t.navOrder}
+      <a href="#delivery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">
+        {t.navOrder}
       </a>
       <a href="#gallery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navGallery}</a>
       <a href="#location" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navLocation}</a>
