@@ -15,6 +15,8 @@ import {
 import {
   Sheet,
   SheetContent,
+  SheetHeader,
+  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -166,7 +168,10 @@ export default function GlitchCoffeeLanding() {
                   </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="bg-black border-l border-[#333] text-white p-12">
-                  <div className="flex flex-col gap-8 font-code text-lg mt-12">
+                  <SheetHeader className="text-left mb-8">
+                    <SheetTitle className="text-white uppercase font-headline">Menu</SheetTitle>
+                  </SheetHeader>
+                  <div className="flex flex-col gap-8 font-code text-lg">
                     <NavLinks />
                   </div>
                 </SheetContent>
