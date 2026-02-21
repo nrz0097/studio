@@ -62,7 +62,7 @@ const translations = {
     faqSeatTitle: "Seating Capacity",
     faqSeatContent: "We have a spacious semi-outdoor area, perfect for hanging out (30-40 pax).",
     footerHeadline: "THIS IS YOUR GLITCH MOMENT.",
-    footerAddress: "Jl. Mulawarman No. 170, Manggar\nBalikpapan Timur",
+    footerAddress: "Jl. Mulawarman No. 170 Rt. 24, Manggar\nBalikpapan Timur",
     footerRights: "© 2026 GLITCH COFFEE. ALL RIGHTS RESERVED."
   },
   id: {
@@ -107,7 +107,7 @@ const translations = {
     faqSeatTitle: "Kapasitas Tempat Duduk",
     faqSeatContent: "Kami punya area semi-outdoor yang cukup luas, cocok buat nongkrong rame-rame (30-40 pax).",
     footerHeadline: "INI MOMEN GLITCH KAMU.",
-    footerAddress: "Jl. Mulawarman no. 170, manggar\nBalikpapan Timur",
+    footerAddress: "Jl. Mulawarman no. 170 Rt. 24, manggar\nBalikpapan Timur",
     footerRights: "© 2026 GLITCH COFFEE. HAK CIPTA DILINDUNGI."
   }
 };
@@ -289,6 +289,7 @@ export default function GlitchCoffeeLanding() {
               src="/images/hero-coffee.jpg" 
               alt="Hero Coffee" 
               fill 
+              sizes="100vw"
               className="object-cover"
               priority
             />
@@ -325,6 +326,7 @@ export default function GlitchCoffeeLanding() {
               src="/images/butterscotch.jpg" 
               alt="Butterscotch" 
               fill 
+              sizes="100vw"
               className="object-cover hover:scale-105 transition-transform duration-500" 
             />
           </div>
@@ -343,6 +345,7 @@ export default function GlitchCoffeeLanding() {
               src="/images/americano.jpg" 
               alt="Americano" 
               fill 
+              sizes="100vw"
               className="object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -449,6 +452,7 @@ export default function GlitchCoffeeLanding() {
                   src={`/images/${id}.jpg`} 
                   alt={`Gallery ${idx}`} 
                   fill 
+                  sizes="100vw"
                   className="object-cover" 
                 />
               </motion.div>
