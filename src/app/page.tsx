@@ -86,7 +86,6 @@ const translations = {
     menuSig1: "Signature — 01",
     menuSig2: "Signature — 02",
     menuDesc1: "Pelarian manis dan asin khas kami. Butterscotch kaya rasa berpadu dengan espresso yang diekstrak sempurna, diakhiri dengan sentuhan garam laut.",
-    menuSig2: "Signature — 02",
     menuDesc2: "Murni, tanpa campuran, berani. Biji kopi single origin dipanggang untuk menonjolkan keasaman kompleks dan hasil akhir yang bersih. Untuk para pemurni.",
     menuFull: "The Full Static",
     menuEssentials: "Esensi Menu",
@@ -205,11 +204,12 @@ export default function GlitchCoffeeLanding() {
           <div className="col-span-4 p-6 grid-line-v flex items-center justify-between md:justify-start">
             <a href="#hero" className="relative h-10 w-32 grayscale hover:grayscale-0 transition-all">
               <Image 
-                src="/logo.png" 
+                src={images['glitch-logo']?.imageUrl || "https://picsum.photos/seed/glitch-logo/300/100"} 
                 alt="Glitch Coffee Logo"
                 fill
                 className="object-contain"
                 priority
+                data-ai-hint="coffee logo"
               />
             </a>
             <div className="md:hidden flex items-center gap-4">
