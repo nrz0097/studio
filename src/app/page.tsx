@@ -1,9 +1,8 @@
-
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, ChevronDown, ChevronUp, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -64,7 +63,7 @@ const translations = {
     faqOrderContent: "Dine-in, Takeaway, WhatsApp Delivery, GoFood, & ShopeeFood.",
     faqSeatTitle: "Seating Capacity",
     faqSeatContent: "We have a spacious semi-outdoor area, perfect for hanging out (30-40 pax).",
-    footerHeadline: "THIS IS YOUR\nGLITCH MOMENT.",
+    footerHeadline: "THIS IS YOUR GLITCH MOMENT.",
     footerAddress: "Jl. Senopati No. 42\nJakarta Selatan",
     footerRights: "© 2024 GLITCH COFFEE ROASTERY. ALL RIGHTS RESERVED."
   },
@@ -110,7 +109,7 @@ const translations = {
     faqOrderContent: "Dine-in, Takeaway, WhatsApp Delivery, GoFood, & ShopeeFood.",
     faqSeatTitle: "Kapasitas Tempat Duduk",
     faqSeatContent: "Kami punya area semi-outdoor yang cukup luas, cocok buat nongkrong rame-rame (30-40 pax).",
-    footerHeadline: "INI MOMEN\nGLITCH KAMU.",
+    footerHeadline: "INI MOMEN GLITCH KAMU.",
     footerAddress: "Jl. Senopati No. 42\nJakarta Selatan",
     footerRights: "© 2024 GLITCH COFFEE ROASTERY. HAK CIPTA DILINDUNGI."
   }
@@ -257,7 +256,7 @@ export default function GlitchCoffeeLanding() {
             </p>
             <div className="flex flex-wrap gap-4">
               <a href="#delivery">
-                <Button variant="outline" className="rounded-none border-white hover:bg-white hover:text-black font-code uppercase px-8 h-12 hover-glitch">
+                <Button variant="outline" className="rounded-none border-white hover:bg-white hover:text-black font-code uppercase px-8 h-12">
                   <Coffee className="mr-2 h-4 w-4" /> {t.heroCaffeineBoost}
                 </Button>
               </a>
@@ -369,7 +368,7 @@ export default function GlitchCoffeeLanding() {
             <Button 
               variant="outline" 
               onClick={() => setIsMenuExpanded(!isMenuExpanded)}
-              className="rounded-none border-white/20 hover:border-white font-code uppercase px-12 h-14 hover-glitch transition-all"
+              className="rounded-none border-white/20 hover:border-white font-code uppercase px-12 h-14 transition-all"
             >
               {isMenuExpanded ? <ChevronUp className="mr-2 h-4 w-4" /> : <ChevronDown className="mr-2 h-4 w-4" />}
               {isMenuExpanded ? t.menuShowLess : t.menuShowMore}
@@ -385,14 +384,14 @@ export default function GlitchCoffeeLanding() {
             <h3 className="font-headline font-black text-4xl uppercase mb-8">{t.deliveryTitle}</h3>
             <div className="flex flex-col gap-4">
               <div className="flex gap-4">
-                <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 hover-glitch border-[#333]">
+                <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 border-[#333]">
                   GoFood
                 </Button>
-                <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 hover-glitch border-[#333]">
+                <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 border-[#333]">
                   ShopeeFood
                 </Button>
               </div>
-              <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full hover-glitch border-[#333]">
+              <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-[#333]">
                 <MessageCircle className="mr-2 h-4 w-4" /> {t.orderWhatsApp}
               </Button>
             </div>
@@ -407,7 +406,7 @@ export default function GlitchCoffeeLanding() {
             <p className="font-body mb-8">
               {t.bottleDesc}
             </p>
-            <Button variant="default" className="bg-black text-white hover:bg-zinc-800 rounded-none font-code uppercase w-full h-14 hover-glitch">
+            <Button variant="default" className="bg-black text-white hover:bg-zinc-800 rounded-none font-code uppercase w-full h-14">
               {t.joinPO}
             </Button>
           </div>
@@ -454,7 +453,7 @@ export default function GlitchCoffeeLanding() {
             {t.eventDesc}
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button variant="outline" className="rounded-none font-code uppercase h-12 hover-glitch">
+            <Button variant="outline" className="rounded-none font-code uppercase h-12">
               {t.inquiryForm}
             </Button>
             <Button variant="ghost" className="rounded-none font-code uppercase h-12 flex items-center gap-2">
