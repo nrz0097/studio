@@ -19,7 +19,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const translations = {
   en: {
@@ -47,9 +46,9 @@ const translations = {
     menuShowLess: "Collapse Menu",
     deliveryTitle: "Bring the glitch home",
     deliveryHours: "Daily 15:00 — 23:00",
-    bottleTitle: "Bottle Series",
-    bottleDesc: "Enjoy Glitch Coffee anywhere. Pre-order now for delivery every Monday & Thursday. Available in 250ml & 1 Liter sizes.",
-    joinPO: "Join the PO",
+    bottleTitle: "GLITCH POCKET",
+    bottleDesc: "Enjoy Glitch Coffee anywhere. Pre-order now for delivery everyday. Available in 250ml.",
+    joinPO: "SOON!",
     limitedStock: "LIMITED STOCK PER BATCH",
     capturedMoments: "Captured Moments",
     followUs: "Follow @glitchcoffee.id",
@@ -92,9 +91,9 @@ const translations = {
     menuShowLess: "Tutup Menu",
     deliveryTitle: "Bawa pulang glitch-mu",
     deliveryHours: "Setiap Hari 15:00 — 23:00",
-    bottleTitle: "Bottle Series",
-    bottleDesc: "Nikmatin Glitch Coffee di mana aja. Pre-order sekarang untuk pengiriman setiap hari Senin & Kamis. Tersedia dalam ukuran 250ml & 1 Liter.",
-    joinPO: "Ikut PO",
+    bottleTitle: "GLITCH POCKET",
+    bottleDesc: "Nikmatin Glitch Coffee di mana aja. Pre-order sekarang untuk pengiriman setiap hari. Tersedia dalam ukuran 250ml.",
+    joinPO: "SEGERA",
     limitedStock: "STOK TERBATAS PER BATCH",
     capturedMoments: "Momen Tertangkap",
     followUs: "Ikuti @glitchcoffee.id",
@@ -180,7 +179,8 @@ export default function GlitchCoffeeLanding() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const t = translations[lang];
-  const images = PlaceHolderImages.reduce((acc, img) => ({ ...acc, [img.id]: img }), {} as Record<string, any>);
+
+  const IG_LINK = "https://www.instagram.com/glitchcoffee.id/";
 
   const NavLinks = () => (
     <>
@@ -283,7 +283,7 @@ export default function GlitchCoffeeLanding() {
             className="relative w-full aspect-square grayscale overflow-hidden"
           >
             <Image 
-              src={images['hero-coffee']?.imageUrl || "/images/hero-coffee.jpg"} 
+              src="/images/hero-coffee.jpg" 
               alt="Hero Coffee" 
               fill 
               className="object-cover"
@@ -319,7 +319,7 @@ export default function GlitchCoffeeLanding() {
           </div>
           <div className="relative aspect-video overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
             <Image 
-              src={images['butterscotch-glitch']?.imageUrl || "/images/butterscotch.jpg"} 
+              src="/images/butterscotch.jpg" 
               alt="Butterscotch" 
               fill 
               className="object-cover hover:scale-105 transition-transform duration-500" 
@@ -337,7 +337,7 @@ export default function GlitchCoffeeLanding() {
           </div>
           <div className="relative aspect-video overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
             <Image 
-              src={images['static-black']?.imageUrl || "/images/americano.jpg"} 
+              src="/images/americano.jpg" 
               alt="Americano" 
               fill 
               className="object-cover hover:scale-105 transition-transform duration-500"
@@ -425,19 +425,19 @@ export default function GlitchCoffeeLanding() {
         <div className="col-span-12 p-8 md:p-16">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
             <h3 className="font-headline font-black text-4xl md:text-5xl uppercase">{t.capturedMoments}</h3>
-            <a href="#" className="font-code text-xs flex items-center hover:underline uppercase">
+            <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="font-code text-xs flex items-center hover:underline uppercase">
               <Instagram className="w-4 h-4 mr-2" /> {t.followUs}
             </a>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['gallery-1', 'gallery-2', 'gallery-3', 'gallery-4', 'gallery-5', 'gallery-6', 'hero-coffee', 'static-black'].map((id, idx) => (
+            {['gallery-1', 'gallery-2', 'gallery-3', 'gallery-4', 'gallery-5', 'gallery-6', 'hero-coffee', 'americano'].map((id, idx) => (
               <motion.div 
                 key={idx}
                 whileHover={{ scale: 0.98 }}
                 className="relative aspect-square bg-[#111] overflow-hidden grayscale hover:grayscale-0 transition-all cursor-crosshair"
               >
                 <Image 
-                  src={images[id]?.imageUrl || `/images/${id}.jpg`} 
+                  src={`/images/${id}.jpg`} 
                   alt={`Gallery ${idx}`} 
                   fill 
                   className="object-cover" 
@@ -470,7 +470,7 @@ export default function GlitchCoffeeLanding() {
         <div className="col-span-12 md:col-span-7 grid-line-v min-h-[300px] md:min-h-[400px]">
           <div className="relative w-full h-full grayscale invert contrast-125">
              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8!2d116.948259!3d-1.236625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMTQnMTIuMCJTIDExNsKwNTYnNTMuNyJF!5e0!3m2!1sen!2sid!4v1600000000000!5m2!1sen!2sid" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8021008544464!2d116.94568417578272!3d-1.236624998751515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df147395633b499%3A0x868b813f5c71a396!2sJl.%20Mulawarman%20No.170%2C%20Manggar%2C%20Kec.%20Balikpapan%20Tim.%2C%20Kota%20Balikpapan%2C%20Kalimantan%20Timur%2076116!5e0!3m2!1sen!2sid!4v1710000000000!5m2!1sen!2sid" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, minHeight: '300px' }} 
@@ -512,7 +512,7 @@ export default function GlitchCoffeeLanding() {
       <footer className="w-full bg-black text-white pt-24 pb-12 border-t border-[#333]">
         <div className="max-w-[1440px] mx-auto px-8 md:px-16 text-center">
           <div className="flex flex-col items-center mb-16">
-            <h2 className="font-headline font-black text-[10px] tracking-[0.2em] uppercase mb-12 text-muted-foreground opacity-50">
+            <h2 className="font-headline font-black text-xs md:text-sm tracking-[0.2em] uppercase mb-12 text-muted-foreground opacity-50">
               {t.footerHeadline}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-2xl mx-auto">
@@ -523,7 +523,7 @@ export default function GlitchCoffeeLanding() {
               <div className="flex flex-col items-center gap-4 font-code text-[10px] uppercase">
                 <span className="text-muted-foreground">Social</span>
                 <div className="flex gap-6">
-                  <a href="#" className="hover:underline">Instagram</a>
+                  <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a>
                 </div>
               </div>
             </div>
