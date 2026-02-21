@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from "react";
@@ -54,7 +53,7 @@ const translations = {
     followUs: "Follow @glitchcoffee.id",
     eventTitle: "Your Event,\nOur Vibe.",
     eventDesc: "Looking for a venue with character? We host everything from intimate weddings, office gatherings, to community workshops.",
-    contactEvent: "Contact Event Manager",
+    contactEvent: "Contact Admin",
     commonQueries: "Common Queries",
     faqOpTitle: "Operational Hours",
     faqOpContent: "Tuesday - Sunday: 15:00 - 23:00",
@@ -99,7 +98,7 @@ const translations = {
     followUs: "Ikuti @glitchcoffee.id",
     eventTitle: "Acara Anda,\nVibe Kami.",
     eventDesc: "Mencari tempat dengan karakter? Kami melayani segalanya mulai dari pernikahan intim, kumpul kantor, hingga lokakarya komunitas.",
-    contactEvent: "Hubungi Manajer Event",
+    contactEvent: "Hubungi Admin",
     commonQueries: "Pertanyaan Umum",
     faqOpTitle: "Jam Operasional",
     faqOpContent: "Selasa - Minggu: 15.00 - 23.00",
@@ -260,7 +259,7 @@ export default function GlitchCoffeeLanding() {
         <div className="col-span-12 md:col-span-8 p-8 md:p-16 flex flex-col justify-center grid-line-v">
           <motion.div {...fadeIn}>
             <span className="font-code text-xs text-muted-foreground uppercase tracking-widest mb-4 block">{t.heroEst}</span>
-            <h1 className="font-headline font-black text-6xl md:text-9xl tracking-tighter uppercase leading-[0.85] mb-8 whitespace-pre-line">
+            <h1 className="font-headline font-black text-6xl md:text-9xl tracking-tighter uppercase leading-[0.85] mb-8 whitespace-pre-line glitch-headline">
               {t.heroHeadline}
             </h1>
             <p className="font-body text-lg md:text-xl text-muted-foreground max-w-xl mb-12">
