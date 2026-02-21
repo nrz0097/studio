@@ -181,6 +181,10 @@ export default function GlitchCoffeeLanding() {
   const t = translations[lang];
 
   const IG_LINK = "https://www.instagram.com/glitchcoffee.id/";
+  const WA_ORDER_LINK = "https://wa.me/6289527539529?text=Halo%20kak%2C%20aku%20mau%20order%20Glitch%20Coffee%20nya%20dong!";
+  const GOFOOD_LINK = "https://gofood.co.id/balikpapan/restaurant/toko-kopi-glitch-coffee-stadion-batakan--f5005098-6a23-40fe-8b0e-79b0126191b6";
+  const SHOPEE_LINK = "https://shopee.co.id/now-food/shop/22328224?deep_and_deferred=1&shareChannel=copy_link&stm_medium=referral&stm_source=https%3A%2F%2Flnk.bio%2F-rw&uls_trackid=54vtd5gl00pv";
+  const WA_EVENT_LINK = "https://wa.me/6289527539529?text=Halo%20kak%2C%20aku%20mau%20tanya-tanya%20untuk%20event%20dong!";
 
   const NavLinks = () => (
     <>
@@ -390,16 +394,22 @@ export default function GlitchCoffeeLanding() {
             <h3 className="font-headline font-black text-4xl uppercase mb-8">{t.deliveryTitle}</h3>
             <div className="flex flex-col gap-4">
               <div className="flex gap-4">
-                <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 border-[#333] transition-colors">
-                  GoFood
-                </Button>
-                <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 border-[#333] transition-colors">
-                  ShopeeFood
-                </Button>
+                <a href={GOFOOD_LINK} target="_blank" rel="noopener noreferrer" className="flex-1">
+                  <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-[#333] transition-colors">
+                    GoFood
+                  </Button>
+                </a>
+                <a href={SHOPEE_LINK} target="_blank" rel="noopener noreferrer" className="flex-1">
+                  <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-[#333] transition-colors">
+                    ShopeeFood
+                  </Button>
+                </a>
               </div>
-              <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-[#333] transition-colors">
-                <MessageCircle className="mr-2 h-4 w-4" /> {t.orderWhatsApp}
-              </Button>
+              <a href={WA_ORDER_LINK} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-[#333] transition-colors">
+                  <MessageCircle className="mr-2 h-4 w-4" /> {t.orderWhatsApp}
+                </Button>
+              </a>
             </div>
           </div>
           <p className="font-code text-xs text-muted-foreground uppercase mt-12 tracking-widest flex items-center">
@@ -458,9 +468,11 @@ export default function GlitchCoffeeLanding() {
             {t.eventDesc}
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button variant="ghost" className="rounded-none font-code uppercase h-12 flex items-center gap-2 transition-colors">
-              <PhoneCall className="w-4 h-4" /> {t.contactEvent}
-            </Button>
+            <a href={WA_EVENT_LINK} target="_blank" rel="noopener noreferrer">
+              <Button variant="ghost" className="rounded-none font-code uppercase h-12 flex items-center gap-2 transition-colors">
+                <PhoneCall className="w-4 h-4" /> {t.contactEvent}
+              </Button>
+            </a>
           </div>
         </div>
       </Section>
@@ -470,7 +482,7 @@ export default function GlitchCoffeeLanding() {
         <div className="col-span-12 md:col-span-7 grid-line-v min-h-[300px] md:min-h-[400px]">
           <div className="relative w-full h-full grayscale invert contrast-125">
              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8021008544464!2d116.94568417578272!3d-1.236624998751515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df147395633b499%3A0x868b813f5c71a396!2sJl.%20Mulawarman%20No.170%2C%20Manggar%2C%20Kec.%20Balikpapan%20Tim.%2C%20Kota%20Balikpapan%2C%20Kalimantan%20Timur%2076116!5e0!3m2!1sen!2sid!4v1710000000000!5m2!1sen!2sid" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8021!2d116.94825909951066!3d-1.236624933906585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df147395633b499%3A0x868b813f5c71a396!2sJl.%20Mulawarman%20No.170%2C%20Manggar%2C%20Kec.%20Balikpapan%20Tim.%2C%20Kota%20Balikpapan%2C%20Kalimantan%20Timur%2076116!5e0!3m2!1sen!2sid!4v1710000000000!5m2!1sen!2sid" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, minHeight: '300px' }} 
