@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart } from "lucide-react";
+import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +12,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const translations = {
@@ -122,25 +127,54 @@ const fadeIn = {
 
 export default function GlitchCoffeeLanding() {
   const [lang, setLang] = useState<"en" | "id">("en");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const t = translations[lang];
   const images = PlaceHolderImages.reduce((acc, img) => ({ ...acc, [img.id]: img }), {} as Record<string, any>);
+
+  const NavLinks = () => (
+    <>
+      <a href="#philosophy" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase">{t.navPhilosophy}</a>
+      <a href="#menu" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase">{t.navMenu}</a>
+      <a href="#delivery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase flex items-center gap-1">
+        <ShoppingCart className="w-3 h-3" /> {t.navOrder}
+      </a>
+      <a href="#gallery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase">{t.navGallery}</a>
+      <a href="#location" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase">{t.navLocation}</a>
+    </>
+  );
 
   return (
     <main className="min-h-screen bg-black">
       {/* Header */}
       <header className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md z-50 grid-line-h">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12">
-          <div className="col-span-4 p-6 grid-line-v flex items-center">
+          <div className="col-span-4 p-6 grid-line-v flex items-center justify-between md:justify-start">
             <h1 className="font-headline font-black text-2xl tracking-tighter uppercase">Glitch Coffee</h1>
+            <div className="md:hidden flex items-center gap-4">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => setLang(lang === "en" ? "id" : "en")}
+                className="font-code text-xs uppercase p-0 h-auto hover:bg-transparent flex items-center gap-2"
+              >
+                {lang === "en" ? "ID" : "EN"}
+              </Button>
+              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" className="p-0 h-auto w-auto hover:bg-transparent">
+                    <Menu className="w-6 h-6 text-white" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="bg-black border-l border-[#333] text-white p-12">
+                  <div className="flex flex-col gap-8 font-code text-lg mt-12">
+                    <NavLinks />
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
-          <nav className="col-span-8 p-6 flex justify-end gap-6 items-center font-code text-xs">
-            <a href="#philosophy" className="hover:text-muted-foreground transition-colors uppercase hidden lg:block">{t.navPhilosophy}</a>
-            <a href="#menu" className="hover:text-muted-foreground transition-colors uppercase hidden md:block">{t.navMenu}</a>
-            <a href="#delivery" className="hover:text-muted-foreground transition-colors uppercase flex items-center gap-1">
-              <ShoppingCart className="w-3 h-3" /> {t.navOrder}
-            </a>
-            <a href="#gallery" className="hover:text-muted-foreground transition-colors uppercase hidden md:block">{t.navGallery}</a>
-            <a href="#location" className="hover:text-muted-foreground transition-colors uppercase hidden md:block">{t.navLocation}</a>
+          <nav className="col-span-8 p-6 hidden md:flex justify-end gap-6 items-center font-code text-xs">
+            <NavLinks />
             <Button 
               variant="ghost" 
               size="sm" 
@@ -254,8 +288,8 @@ export default function GlitchCoffeeLanding() {
       {/* Additional Menu List */}
       <Section>
         <div className="col-span-12 p-8 md:p-16">
-          <div className="flex justify-between items-end mb-12">
-            <h3 className="font-headline font-black text-5xl uppercase">{t.menuFull}</h3>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+            <h3 className="font-headline font-black text-4xl md:text-5xl uppercase">{t.menuFull}</h3>
             <span className="font-code text-xs text-muted-foreground uppercase">{t.menuEssentials}</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4 font-body">
@@ -320,8 +354,8 @@ export default function GlitchCoffeeLanding() {
       {/* Instagram Gallery */}
       <Section id="gallery">
         <div className="col-span-12 p-8 md:p-16">
-          <div className="flex justify-between items-center mb-12">
-            <h3 className="font-headline font-black text-5xl uppercase">{t.capturedMoments}</h3>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
+            <h3 className="font-headline font-black text-4xl md:text-5xl uppercase">{t.capturedMoments}</h3>
             <a href="#" className="font-code text-xs flex items-center hover:underline uppercase">
               <Instagram className="w-4 h-4 mr-2" /> {t.followUs}
             </a>
@@ -349,13 +383,13 @@ export default function GlitchCoffeeLanding() {
       {/* Event & Gathering */}
       <Section>
         <div className="col-span-12 md:col-span-4 p-8 md:p-16 grid-line-v flex flex-col justify-center bg-[#111]">
-          <h3 className="font-headline font-black text-5xl uppercase mb-6 leading-none whitespace-pre-line">{t.eventTitle}</h3>
+          <h3 className="font-headline font-black text-4xl md:text-5xl uppercase mb-6 leading-none whitespace-pre-line">{t.eventTitle}</h3>
         </div>
         <div className="col-span-12 md:col-span-8 p-8 md:p-16 flex flex-col justify-center">
-          <p className="font-body text-2xl mb-12">
+          <p className="font-body text-xl md:text-2xl mb-12">
             {t.eventDesc}
           </p>
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-4">
             <Button variant="outline" className="rounded-none font-code uppercase h-12 hover-glitch">
               {t.inquiryForm}
             </Button>
@@ -368,13 +402,13 @@ export default function GlitchCoffeeLanding() {
 
       {/* Location & FAQ */}
       <Section id="location">
-        <div className="col-span-12 md:col-span-7 grid-line-v min-h-[400px]">
+        <div className="col-span-12 md:col-span-7 grid-line-v min-h-[300px] md:min-h-[400px]">
           <div className="relative w-full h-full grayscale invert contrast-125">
              <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d106.8!3d-6.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTInMDAuMCJTIDEwNsKwNDgnMDAuMCJF!5e0!3m2!1sen!2sid!4v1600000000000!5m2!1sen!2sid" 
                 width="100%" 
                 height="100%" 
-                style={{ border: 0, minHeight: '400px' }} 
+                style={{ border: 0, minHeight: '300px' }} 
                 allowFullScreen={false} 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
@@ -388,19 +422,19 @@ export default function GlitchCoffeeLanding() {
           </div>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1" className="border-b border-[#333]">
-              <AccordionTrigger className="font-headline text-sm uppercase hover:no-underline py-6">{t.faqOpTitle}</AccordionTrigger>
+              <AccordionTrigger className="font-headline text-sm uppercase hover:no-underline py-6 text-left">{t.faqOpTitle}</AccordionTrigger>
               <AccordionContent className="font-body text-muted-foreground pb-6 whitespace-pre-line">
                 {t.faqOpContent}
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-2" className="border-b border-[#333]">
-              <AccordionTrigger className="font-headline text-sm uppercase hover:no-underline py-6">{t.faqOrderTitle}</AccordionTrigger>
+              <AccordionTrigger className="font-headline text-sm uppercase hover:no-underline py-6 text-left">{t.faqOrderTitle}</AccordionTrigger>
               <AccordionContent className="font-body text-muted-foreground pb-6 whitespace-pre-line">
                 {t.faqOrderContent}
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3" className="border-b border-[#333]">
-              <AccordionTrigger className="font-headline text-sm uppercase hover:no-underline py-6">{t.faqSeatTitle}</AccordionTrigger>
+              <AccordionTrigger className="font-headline text-sm uppercase hover:no-underline py-6 text-left">{t.faqSeatTitle}</AccordionTrigger>
               <AccordionContent className="font-body text-muted-foreground pb-6 whitespace-pre-line">
                 {t.faqSeatContent}
               </AccordionContent>
@@ -413,18 +447,20 @@ export default function GlitchCoffeeLanding() {
       <footer className="w-full bg-black text-white pt-24 pb-12 border-t border-[#333]">
         <div className="max-w-[1440px] mx-auto px-8 md:px-16">
           <div className="flex flex-col items-center mb-16">
-            <h2 className="font-headline font-black text-2xl md:text-3xl tracking-tighter uppercase leading-none mb-8 text-center">
+            <h2 className="font-headline font-black text-xl md:text-2xl tracking-tighter uppercase leading-none mb-12 text-center text-muted-foreground">
               {t.footerHeadline}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 w-full max-w-4xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-4xl">
               <div className="flex flex-col items-center md:items-start gap-4 font-code text-xs uppercase">
                 <span className="text-muted-foreground">Location</span>
                 <span className="whitespace-pre-line text-center md:text-left">{t.footerAddress}</span>
               </div>
               <div className="flex flex-col items-center md:items-end gap-4 font-code text-xs uppercase">
                 <span className="text-muted-foreground">Social</span>
-                <a href="#" className="hover:underline">Instagram</a>
-                <a href="#" className="hover:underline">TikTok</a>
+                <div className="flex flex-col items-center md:items-end gap-2">
+                  <a href="#" className="hover:underline">Instagram</a>
+                  <a href="#" className="hover:underline">TikTok</a>
+                </div>
               </div>
             </div>
           </div>
