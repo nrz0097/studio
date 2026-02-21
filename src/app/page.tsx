@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -177,6 +177,7 @@ export default function GlitchCoffeeLanding() {
   const [lang, setLang] = useState<"en" | "id">("en");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const t = translations[lang];
 
   const IG_LINK = "https://www.instagram.com/glitchcoffee.id/";
@@ -184,6 +185,23 @@ export default function GlitchCoffeeLanding() {
   const GOFOOD_LINK = "https://gofood.co.id/balikpapan/restaurant/toko-kopi-glitch-coffee-stadion-batakan--f5005098-6a23-40fe-8b0e-79b0126191b6";
   const SHOPEE_LINK = "https://shopee.co.id/now-food/shop/22328224?deep_and_deferred=1&shareChannel=copy_link&stm_medium=referral&stm_source=https%3A%2F%2Flnk.bio%2F-rw&uls_trackid=54vtd5gl00pv";
   const WA_EVENT_LINK = "https://wa.me/6289527539529?text=Halo%20kak%2C%20aku%20mau%20tanya-tanya%20untuk%20event%20dong!";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const NavLinks = () => (
     <>
@@ -289,7 +307,7 @@ export default function GlitchCoffeeLanding() {
               src="/images/hero-coffee.jpg" 
               alt="Hero Coffee" 
               fill 
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, 33vw"
               className="object-cover"
               priority
             />
@@ -326,7 +344,7 @@ export default function GlitchCoffeeLanding() {
               src="/images/butterscotch.jpg" 
               alt="Butterscotch" 
               fill 
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover hover:scale-105 transition-transform duration-500" 
             />
           </div>
@@ -345,7 +363,7 @@ export default function GlitchCoffeeLanding() {
               src="/images/americano.jpg" 
               alt="Americano" 
               fill 
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -452,7 +470,7 @@ export default function GlitchCoffeeLanding() {
                   src={`/images/${id}.jpg`} 
                   alt={`Gallery ${idx}`} 
                   fill 
-                  sizes="100vw"
+                  sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover" 
                 />
               </motion.div>
@@ -485,7 +503,7 @@ export default function GlitchCoffeeLanding() {
         <div className="col-span-12 md:col-span-7 grid-line-v min-h-[300px] md:min-h-[400px]">
           <div className="relative w-full h-full grayscale invert contrast-125">
              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.3055546067873!2d116.94814203079964!3d-1.2367494646004988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df1490064d5c5f3%3A0xab3ae5f90f00daaf!2sGLITCH%20COFFEE!5e0!3m2!1sid!2sid!4v1771649451092!5m2!1sid!2sid" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.825264356877!2d116.94825909951066!3d-1.236624933906585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df1490064d5c5f3%3A0xab3ae5f90f00daaf!2sGLITCH%20COFFEE!5e0!3m2!1sid!2sid!4v1771649451092!5m2!1sid!2sid" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, minHeight: '300px' }} 
@@ -550,6 +568,22 @@ export default function GlitchCoffeeLanding() {
           </div>
         </div>
       </footer>
+
+      {/* Floating Scroll to Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-[100] bg-white text-black p-3 rounded-none border border-white hover:bg-black hover:text-white transition-all duration-300 shadow-xl"
+            aria-label="Scroll to top"
+          >
+            <ChevronUp className="w-6 h-6" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
