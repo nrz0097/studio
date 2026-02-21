@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee } from "lucide-react";
+import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,6 +20,7 @@ const translations = {
     navMenu: "Menu",
     navGallery: "Gallery",
     navLocation: "Location",
+    navOrder: "Order",
     heroEst: "Established 2023",
     heroHeadline: "Step Into\nThe Static",
     heroDesc: "No need to dress up, no need to keep up appearances. Here is a place to pause for a moment from the world's noise. Sit down, enjoy your coffee, and just be yourself.",
@@ -63,6 +64,7 @@ const translations = {
     navMenu: "Menu",
     navGallery: "Galeri",
     navLocation: "Lokasi",
+    navOrder: "Pesan",
     heroEst: "Sejak 2023",
     heroHeadline: "Step Into\nThe Static",
     heroDesc: "Gak perlu dandan rapi, gak perlu jaga imej. Di sini tempatnya buat jeda sebentar dari bisingnya dunia. Duduk, nikmatin kopi, dan jadi diri sendiri aja.",
@@ -132,8 +134,11 @@ export default function GlitchCoffeeLanding() {
             <h1 className="font-headline font-black text-2xl tracking-tighter uppercase">Glitch Coffee</h1>
           </div>
           <nav className="col-span-8 p-6 flex justify-end gap-6 items-center font-code text-xs">
-            <a href="#philosophy" className="hover:text-muted-foreground transition-colors uppercase hidden md:block">{t.navPhilosophy}</a>
+            <a href="#philosophy" className="hover:text-muted-foreground transition-colors uppercase hidden lg:block">{t.navPhilosophy}</a>
             <a href="#menu" className="hover:text-muted-foreground transition-colors uppercase hidden md:block">{t.navMenu}</a>
+            <a href="#delivery" className="hover:text-muted-foreground transition-colors uppercase flex items-center gap-1">
+              <ShoppingCart className="w-3 h-3" /> {t.navOrder}
+            </a>
             <a href="#gallery" className="hover:text-muted-foreground transition-colors uppercase hidden md:block">{t.navGallery}</a>
             <a href="#location" className="hover:text-muted-foreground transition-colors uppercase hidden md:block">{t.navLocation}</a>
             <Button 
@@ -161,12 +166,16 @@ export default function GlitchCoffeeLanding() {
               {t.heroDesc}
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button variant="outline" className="rounded-none border-white hover:bg-white hover:text-black font-code uppercase px-8 h-12 hover-glitch">
-                <Coffee className="mr-2 h-4 w-4" /> {t.heroCaffeineBoost}
-              </Button>
-              <Button variant="secondary" className="rounded-none font-code uppercase px-8 h-12">
-                <MapPin className="mr-2 h-4 w-4" /> {t.checkLocation}
-              </Button>
+              <a href="#delivery">
+                <Button variant="outline" className="rounded-none border-white hover:bg-white hover:text-black font-code uppercase px-8 h-12 hover-glitch">
+                  <Coffee className="mr-2 h-4 w-4" /> {t.heroCaffeineBoost}
+                </Button>
+              </a>
+              <a href="#location">
+                <Button variant="secondary" className="rounded-none font-code uppercase px-8 h-12">
+                  <MapPin className="mr-2 h-4 w-4" /> {t.checkLocation}
+                </Button>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -272,7 +281,7 @@ export default function GlitchCoffeeLanding() {
       </Section>
 
       {/* Online Delivery & Bottle Series */}
-      <Section>
+      <Section id="delivery">
         <div className="col-span-12 md:col-span-6 p-8 md:p-16 grid-line-v flex flex-col justify-between">
           <div>
             <h3 className="font-headline font-black text-4xl uppercase mb-8">{t.deliveryTitle}</h3>
