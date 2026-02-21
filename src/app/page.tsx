@@ -202,16 +202,15 @@ export default function GlitchCoffeeLanding() {
       <header className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md z-50 grid-line-h">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12">
           <div className="col-span-4 p-6 grid-line-v flex items-center justify-between md:justify-start">
-            <a href="#hero" className="relative h-10 w-32 grayscale hover:grayscale-0 transition-all">
+            <a href="#hero" className="flex items-center grayscale hover:grayscale-0 transition-all h-full">
               <Image 
                 src="/logo.png" 
                 alt="Glitch Coffee Logo"
-                width={128}
+                width={120}
                 height={40}
-                className="object-contain"
+                className="h-8 w-auto md:h-10 object-contain"
                 priority
                 onError={(e) => {
-                   // Fallback to placeholder if static file doesn't exist yet
                    (e.target as any).src = images['glitch-logo']?.imageUrl || "https://picsum.photos/seed/glitch-logo/300/100";
                 }}
               />
@@ -522,19 +521,19 @@ export default function GlitchCoffeeLanding() {
 
       {/* Footer */}
       <footer className="w-full bg-black text-white pt-24 pb-12 border-t border-[#333]">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16">
+        <div className="max-w-[1440px] mx-auto px-8 md:px-16 text-center">
           <div className="flex flex-col items-center mb-16">
-            <h2 className="font-headline font-black text-xs tracking-widest uppercase leading-none mb-12 text-center text-muted-foreground opacity-50">
+            <h2 className="font-headline font-black text-[10px] tracking-[0.2em] uppercase mb-12 text-muted-foreground opacity-50">
               {t.footerHeadline}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-4xl">
-              <div className="flex flex-col items-center md:items-start gap-4 font-code text-xs uppercase text-center md:text-left">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-2xl mx-auto">
+              <div className="flex flex-col items-center gap-4 font-code text-[10px] uppercase">
                 <span className="text-muted-foreground">Location</span>
-                <span className="whitespace-pre-line">{t.footerAddress}</span>
+                <span className="whitespace-pre-line leading-relaxed">{t.footerAddress}</span>
               </div>
-              <div className="flex flex-col items-center md:items-end gap-4 font-code text-xs uppercase text-center md:text-right">
+              <div className="flex flex-col items-center gap-4 font-code text-[10px] uppercase">
                 <span className="text-muted-foreground">Social</span>
-                <div className="flex flex-col items-center md:items-end gap-2">
+                <div className="flex gap-6">
                   <a href="#" className="hover:underline">Instagram</a>
                   <a href="#" className="hover:underline">TikTok</a>
                 </div>
