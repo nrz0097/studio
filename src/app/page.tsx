@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages } from "lucide-react";
+import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,6 +23,7 @@ const translations = {
     heroEst: "Established 2023",
     heroHeadline: "Step Into\nThe Static",
     heroDesc: "No need to dress up, no need to keep up appearances. Here is a place to pause for a moment from the world's noise. Sit down, enjoy your coffee, and just be yourself.",
+    heroCaffeineBoost: "Get your caffeine boost",
     orderWhatsApp: "Order via WhatsApp",
     checkLocation: "Check Location",
     phiTitle: "Handcrafted,\nUnexpected,\nYours.",
@@ -65,6 +66,7 @@ const translations = {
     heroEst: "Sejak 2023",
     heroHeadline: "Step Into\nThe Static",
     heroDesc: "Gak perlu dandan rapi, gak perlu jaga imej. Di sini tempatnya buat jeda sebentar dari bisingnya dunia. Duduk, nikmatin kopi, dan jadi diri sendiri aja.",
+    heroCaffeineBoost: "Dapatkan asupan kafeinmu",
     orderWhatsApp: "Pesan via WhatsApp",
     checkLocation: "Cek Lokasi",
     phiTitle: "Handcrafted,\nUnexpected,\nYours.",
@@ -160,7 +162,7 @@ export default function GlitchCoffeeLanding() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Button variant="outline" className="rounded-none border-white hover:bg-white hover:text-black font-code uppercase px-8 h-12 hover-glitch">
-                <MessageCircle className="mr-2 h-4 w-4" /> {t.orderWhatsApp}
+                <Coffee className="mr-2 h-4 w-4" /> {t.heroCaffeineBoost}
               </Button>
               <Button variant="secondary" className="rounded-none font-code uppercase px-8 h-12">
                 <MapPin className="mr-2 h-4 w-4" /> {t.checkLocation}
@@ -274,12 +276,17 @@ export default function GlitchCoffeeLanding() {
         <div className="col-span-12 md:col-span-6 p-8 md:p-16 grid-line-v flex flex-col justify-between">
           <div>
             <h3 className="font-headline font-black text-4xl uppercase mb-8">{t.deliveryTitle}</h3>
-            <div className="flex gap-4">
-              <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 hover-glitch border-[#333]">
-                GoFood
-              </Button>
-              <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 hover-glitch border-[#333]">
-                ShopeeFood
+            <div className="flex flex-col gap-4">
+              <div className="flex gap-4">
+                <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 hover-glitch border-[#333]">
+                  GoFood
+                </Button>
+                <Button variant="outline" className="rounded-none font-code uppercase h-14 flex-1 hover-glitch border-[#333]">
+                  ShopeeFood
+                </Button>
+              </div>
+              <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full hover-glitch border-[#333]">
+                <MessageCircle className="mr-2 h-4 w-4" /> {t.orderWhatsApp}
               </Button>
             </div>
           </div>
