@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, ChevronDown, ChevronUp } from "lucide-react";
+import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, ChevronDown, ChevronUp, X } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -186,13 +186,13 @@ export default function GlitchCoffeeLanding() {
 
   const NavLinks = () => (
     <>
-      <a href="#philosophy" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase">{t.navPhilosophy}</a>
-      <a href="#menu" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase">{t.navMenu}</a>
-      <a href="#delivery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase flex items-center gap-1">
+      <a href="#philosophy" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navPhilosophy}</a>
+      <a href="#menu" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navMenu}</a>
+      <a href="#delivery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight flex items-center gap-1">
         <ShoppingCart className="w-3 h-3" /> {t.navOrder}
       </a>
-      <a href="#gallery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase">{t.navGallery}</a>
-      <a href="#location" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase">{t.navLocation}</a>
+      <a href="#gallery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navGallery}</a>
+      <a href="#location" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navLocation}</a>
     </>
   );
 
@@ -204,12 +204,16 @@ export default function GlitchCoffeeLanding() {
           <div className="col-span-4 p-6 grid-line-v flex items-center justify-between md:justify-start">
             <a href="#hero" className="relative h-10 w-32 grayscale hover:grayscale-0 transition-all">
               <Image 
-                src={images['glitch-logo']?.imageUrl || "https://picsum.photos/seed/glitch-logo/300/100"} 
+                src="/logo.png" 
                 alt="Glitch Coffee Logo"
-                fill
+                width={128}
+                height={40}
                 className="object-contain"
                 priority
-                data-ai-hint="coffee logo"
+                onError={(e) => {
+                   // Fallback to placeholder if static file doesn't exist yet
+                   (e.target as any).src = images['glitch-logo']?.imageUrl || "https://picsum.photos/seed/glitch-logo/300/100";
+                }}
               />
             </a>
             <div className="md:hidden flex items-center gap-4">
@@ -258,9 +262,9 @@ export default function GlitchCoffeeLanding() {
         <div className="col-span-12 md:col-span-8 p-8 md:p-16 flex flex-col justify-center grid-line-v">
           <motion.div {...fadeIn}>
             <span className="font-code text-xs text-muted-foreground uppercase tracking-widest mb-4 block">{t.heroEst}</span>
-            <h2 className="font-headline font-black text-6xl md:text-9xl tracking-tighter uppercase leading-[0.85] mb-8 whitespace-pre-line">
+            <h1 className="font-headline font-black text-6xl md:text-9xl tracking-tighter uppercase leading-[0.85] mb-8 whitespace-pre-line">
               {t.heroHeadline}
-            </h2>
+            </h1>
             <p className="font-body text-lg md:text-xl text-muted-foreground max-w-xl mb-12">
               {t.heroDesc}
             </p>
@@ -520,15 +524,15 @@ export default function GlitchCoffeeLanding() {
       <footer className="w-full bg-black text-white pt-24 pb-12 border-t border-[#333]">
         <div className="max-w-[1440px] mx-auto px-8 md:px-16">
           <div className="flex flex-col items-center mb-16">
-            <h2 className="font-headline font-black text-sm md:text-base tracking-tighter uppercase leading-none mb-12 text-center text-muted-foreground opacity-50">
+            <h2 className="font-headline font-black text-xs tracking-widest uppercase leading-none mb-12 text-center text-muted-foreground opacity-50">
               {t.footerHeadline}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-4xl">
-              <div className="flex flex-col items-center md:items-start gap-4 font-code text-xs uppercase">
+              <div className="flex flex-col items-center md:items-start gap-4 font-code text-xs uppercase text-center md:text-left">
                 <span className="text-muted-foreground">Location</span>
-                <span className="whitespace-pre-line text-center md:text-left">{t.footerAddress}</span>
+                <span className="whitespace-pre-line">{t.footerAddress}</span>
               </div>
-              <div className="flex flex-col items-center md:items-end gap-4 font-code text-xs uppercase">
+              <div className="flex flex-col items-center md:items-end gap-4 font-code text-xs uppercase text-center md:text-right">
                 <span className="text-muted-foreground">Social</span>
                 <div className="flex flex-col items-center md:items-end gap-2">
                   <a href="#" className="hover:underline">Instagram</a>
@@ -538,7 +542,9 @@ export default function GlitchCoffeeLanding() {
             </div>
           </div>
           <div className="flex flex-col items-center border-t border-[#333] pt-12">
-            <span className="font-code text-[10px] text-muted-foreground uppercase tracking-widest text-center">{t.footerRights}</span>
+            <span className="font-code text-[10px] text-muted-foreground uppercase tracking-widest text-center">
+              {t.footerRights}
+            </span>
           </div>
         </div>
       </footer>
