@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from "react";
@@ -185,7 +186,7 @@ export default function GlitchCoffeeLanding() {
             className="relative w-full aspect-square grayscale overflow-hidden"
           >
             <Image 
-              src={images['hero-coffee']?.imageUrl} 
+              src={images['hero-coffee']?.imageUrl || "https://picsum.photos/seed/hero/800/800"} 
               alt="Coffee" 
               fill 
               className="object-cover hover:scale-110 transition-transform duration-700 hover-glitch"
@@ -221,7 +222,7 @@ export default function GlitchCoffeeLanding() {
           </div>
           <div className="relative aspect-video overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
             <Image 
-              src={images['butterscotch-glitch']?.imageUrl} 
+              src={images['butterscotch-glitch']?.imageUrl || "https://picsum.photos/seed/latte/800/450"} 
               alt="Butterscotch Glitch" 
               fill 
               className="object-cover hover:scale-105 transition-transform duration-500 hover-glitch" 
@@ -240,7 +241,7 @@ export default function GlitchCoffeeLanding() {
           </div>
           <div className="relative aspect-video overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
             <Image 
-              src={images['static-black']?.imageUrl} 
+              src={images['static-black']?.imageUrl || "https://picsum.photos/seed/black/800/450"} 
               alt="Static Black" 
               fill 
               className="object-cover hover:scale-105 transition-transform duration-500 hover-glitch"
@@ -333,11 +334,11 @@ export default function GlitchCoffeeLanding() {
                 className="relative aspect-square bg-[#111] overflow-hidden grayscale hover:grayscale-0 transition-all cursor-crosshair"
               >
                 <Image 
-                  src={images[id]?.imageUrl} 
+                  src={images[id]?.imageUrl || `https://picsum.photos/seed/${id}/600/600`} 
                   alt={`Gallery ${idx}`} 
                   fill 
                   className="object-cover hover-glitch" 
-                  data-ai-hint={images[id]?.imageHint}
+                  data-ai-hint={images[id]?.imageHint || "coffee vibe"}
                 />
               </motion.div>
             ))}
@@ -411,27 +412,23 @@ export default function GlitchCoffeeLanding() {
       {/* Footer */}
       <footer className="w-full bg-black text-white pt-24 pb-12 border-t border-[#333]">
         <div className="max-w-[1440px] mx-auto px-8 md:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
-            <div>
-              <h2 className="font-headline font-black text-5xl md:text-7xl tracking-tighter uppercase leading-none mb-8 whitespace-pre-line">
-                {t.footerHeadline}
-              </h2>
-            </div>
-            <div className="flex flex-col justify-end">
-              <div className="grid grid-cols-2 gap-8 font-code text-xs uppercase">
-                <div className="flex flex-col gap-4">
-                  <span className="text-muted-foreground">Location</span>
-                  <span className="whitespace-pre-line">{t.footerAddress}</span>
-                </div>
-                <div className="flex flex-col gap-4">
-                  <span className="text-muted-foreground">Social</span>
-                  <a href="#" className="hover:underline">Instagram</a>
-                  <a href="#" className="hover:underline">TikTok</a>
-                </div>
+          <div className="flex flex-col items-center mb-16">
+            <h2 className="font-headline font-black text-2xl md:text-3xl tracking-tighter uppercase leading-none mb-8 text-center">
+              {t.footerHeadline}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 w-full max-w-4xl">
+              <div className="flex flex-col items-center md:items-start gap-4 font-code text-xs uppercase">
+                <span className="text-muted-foreground">Location</span>
+                <span className="whitespace-pre-line text-center md:text-left">{t.footerAddress}</span>
+              </div>
+              <div className="flex flex-col items-center md:items-end gap-4 font-code text-xs uppercase">
+                <span className="text-muted-foreground">Social</span>
+                <a href="#" className="hover:underline">Instagram</a>
+                <a href="#" className="hover:underline">TikTok</a>
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-center border-t border-[#333] pt-12 gap-8">
+          <div className="flex flex-col items-center border-t border-[#333] pt-12">
             <span className="font-code text-[10px] text-muted-foreground uppercase tracking-widest text-center">{t.footerRights}</span>
           </div>
         </div>
