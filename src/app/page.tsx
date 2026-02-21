@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, ChevronDown, ChevronUp } from "lucide-react";
+import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, ChevronDown, ChevronUp, X } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -197,7 +197,7 @@ export default function GlitchCoffeeLanding() {
   );
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-black overflow-x-hidden">
       {/* Header */}
       <header className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md z-50 grid-line-h">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12">
@@ -220,7 +220,7 @@ export default function GlitchCoffeeLanding() {
                 </SheetTrigger>
                 <SheetContent side="right" className="bg-black border-l border-[#333] text-white p-12">
                   <SheetHeader className="text-left mb-8">
-                    <SheetTitle className="text-white uppercase font-headline">Menu</SheetTitle>
+                    <SheetTitle className="text-white uppercase font-headline">Navigation</SheetTitle>
                   </SheetHeader>
                   <div className="flex flex-col gap-8 font-code text-lg">
                     <NavLinks />
@@ -300,7 +300,7 @@ export default function GlitchCoffeeLanding() {
       </Section>
 
       {/* Product Deep Dive */}
-      <Section id="menu">
+      <Section>
         <div className="col-span-12 md:col-span-6 p-0 grid-line-v">
           <div className="p-8 md:p-16 grid-line-h">
             <span className="font-code text-xs text-muted-foreground uppercase mb-4 block">{t.menuSig1}</span>
@@ -342,7 +342,7 @@ export default function GlitchCoffeeLanding() {
       </Section>
 
       {/* Additional Menu List - Essentials */}
-      <Section>
+      <Section id="menu">
         <div className="col-span-12 p-8 md:p-16">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
             <h3 className="font-headline font-black text-4xl md:text-5xl uppercase">{t.menuFull}</h3>
@@ -351,7 +351,7 @@ export default function GlitchCoffeeLanding() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
             {menuData.map((cat, catIdx) => (
-              <div key={catIdx} className={`flex flex-col gap-4 ${!isMenuExpanded && catIdx > 0 ? 'hidden md:flex' : ''}`}>
+              <div key={catIdx} className={`flex flex-col gap-4 ${!isMenuExpanded && catIdx > 0 ? 'hidden md:flex' : 'flex'}`}>
                 <h4 className="font-headline text-lg text-muted-foreground border-b border-[#333] pb-2 mb-2">{cat.category}</h4>
                 <div className="flex flex-col gap-1">
                   {(isMenuExpanded ? cat.items : cat.items.slice(0, 3)).map((item, idx) => (
@@ -511,7 +511,7 @@ export default function GlitchCoffeeLanding() {
       <footer className="w-full bg-black text-white pt-24 pb-12 border-t border-[#333]">
         <div className="max-w-[1440px] mx-auto px-8 md:px-16">
           <div className="flex flex-col items-center mb-16">
-            <h2 className="font-headline font-black text-xl md:text-2xl tracking-tighter uppercase leading-none mb-12 text-center text-muted-foreground">
+            <h2 className="font-headline font-black text-lg md:text-xl tracking-tighter uppercase leading-none mb-12 text-center text-muted-foreground opacity-50">
               {t.footerHeadline}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-4xl">
