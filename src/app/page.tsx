@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from "react";
@@ -414,7 +413,7 @@ export default function GlitchCoffeeLanding() {
         <div className="max-w-[1440px] mx-auto px-8 md:px-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
             <div>
-              <h2 className="font-headline font-black text-7xl md:text-9xl tracking-tighter uppercase leading-none mb-8 whitespace-pre-line">
+              <h2 className="font-headline font-black text-5xl md:text-7xl tracking-tighter uppercase leading-none mb-8 whitespace-pre-line">
                 {t.footerHeadline}
               </h2>
             </div>
@@ -432,12 +431,8 @@ export default function GlitchCoffeeLanding() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row justify-between items-center border-t border-[#333] pt-12 gap-8">
-            <span className="font-code text-[10px] text-muted-foreground uppercase tracking-widest">{t.footerRights}</span>
-            <div className="flex gap-8 font-code text-[10px] uppercase tracking-widest">
-              <a href="#" className="hover:text-white text-muted-foreground">Privacy Policy</a>
-              <a href="#" className="hover:text-white text-muted-foreground">Terms of Service</a>
-            </div>
+          <div className="flex flex-col items-center border-t border-[#333] pt-12 gap-8">
+            <span className="font-code text-[10px] text-muted-foreground uppercase tracking-widest text-center">{t.footerRights}</span>
           </div>
         </div>
       </footer>
