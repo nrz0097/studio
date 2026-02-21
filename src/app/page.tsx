@@ -38,7 +38,7 @@ const translations = {
     menuSig1: "Signature — 01",
     menuSig2: "Signature — 02",
     menuDesc1: "Our signature sweet and salty escape. Rich butterscotch meeting perfectly extracted espresso, finished with a hint of sea salt.",
-    menuDesc2: "Pure, unadulterated, bold. Single origin beans roasted to highlight the complex acidity and clean finish. For the purists.",
+    menuDesc2: "Pure. Bold. Intense. Single origin beans crafted to reveal rich, dark notes with zero acidity and a clean, powerful finish. This is coffee at its rawest.",
     menuFull: "The Full Static",
     menuEssentials: "Menu Essentials",
     menuShowMore: "Expand Menu",
@@ -77,13 +77,13 @@ const translations = {
     heroCaffeineBoost: "Dapatkan asupan kafeinmu",
     orderWhatsApp: "Pesan via WhatsApp",
     checkLocation: "Cek Lokasi",
-    phiTitle: "Handcrafted,\nUnexpected,\nYours.",
+    phiTitle: "Handcrafted.\nUnexpected.\nYours.",
     phiLabel: "Filosofi — 01",
     phiDesc: "Kami merayakan ketidaksempurnaan. 'Glitch' dalam rutinitas sehari-hari. Ruang terbuka kami dirancang untuk koneksi otentik dan pengalaman murni. Tanpa filter.",
     menuSig1: "Signature — 01",
     menuSig2: "Signature — 02",
     menuDesc1: "Pelarian manis dan asin khas kami. Butterscotch kaya rasa berpadu dengan espresso yang diekstrak sempurna, diakhiri dengan sentuhan garam laut.",
-    menuDesc2: "Murni, tanpa campuran, berani. Biji kopi single origin dipanggang untuk menonjolkan keasaman kompleks dan hasil akhir yang bersih. Untuk para pemurni.",
+    menuDesc2: "Murni. Berani. Intens. Biji kopi single origin yang dikurasi untuk menonjolkan rasa bold dan dark, tanpa rasa asam, dengan finish yang bersih dan kuat. Inilah kopi dalam bentuknya yang paling jujur.",
     menuFull: "The Full Static",
     menuEssentials: "Esensi Menu",
     menuShowMore: "Lihat Semua",
@@ -437,8 +437,8 @@ export default function GlitchCoffeeLanding() {
           </p>
         </div>
         <div className="col-span-12 md:col-span-6 p-8 md:p-16 flex flex-col justify-between bg-white text-black relative overflow-hidden">
-          {/* Minimalist Bottle Illustration Overlay */}
-          <svg className="absolute bottom-0 right-0 w-32 h-64 text-black/5 -mr-8 -mb-16 pointer-events-none" viewBox="0 0 100 200" fill="currentColor">
+          {/* Minimalist Bottle Illustration Overlay - Visibility Increased */}
+          <svg className="absolute bottom-0 right-0 w-32 h-64 text-black/15 -mr-8 -mb-16 pointer-events-none" viewBox="0 0 100 200" fill="currentColor">
             <path d="M30 20 L70 20 L70 50 L85 70 L85 180 L15 180 L15 70 L30 50 Z" />
             <rect x="35" y="10" width="30" height="10" />
           </svg>
