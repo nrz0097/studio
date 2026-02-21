@@ -55,7 +55,6 @@ const translations = {
     followUs: "Follow @glitchcoffee.id",
     eventTitle: "Your Event,\nOur Vibe.",
     eventDesc: "Looking for a venue with character? We host everything from intimate weddings, office gatherings, to community workshops.",
-    inquiryForm: "Inquiry Form",
     contactEvent: "Contact Event Manager",
     commonQueries: "Common Queries",
     faqOpTitle: "Operational Hours",
@@ -101,7 +100,6 @@ const translations = {
     followUs: "Ikuti @glitchcoffee.id",
     eventTitle: "Acara Anda,\nVibe Kami.",
     eventDesc: "Mencari tempat dengan karakter? Kami melayani segalanya mulai dari pernikahan intim, kumpul kantor, hingga lokakarya komunitas.",
-    inquiryForm: "Formulir Inquiry",
     contactEvent: "Hubungi Manajer Event",
     commonQueries: "Pertanyaan Umum",
     faqOpTitle: "Jam Operasional",
@@ -202,17 +200,14 @@ export default function GlitchCoffeeLanding() {
       <header className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md z-50 grid-line-h">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12">
           <div className="col-span-4 p-6 grid-line-v flex items-center justify-between md:justify-start">
-            <a href="#hero" className="flex items-center h-full">
+            <a href="#hero" className="flex items-center h-8 md:h-10">
               <Image 
                 src="/logo.png" 
                 alt="Glitch Coffee Logo"
-                width={120}
-                height={40}
-                className="h-8 w-auto md:h-10 object-contain"
+                width={200}
+                height={60}
+                className="h-full w-auto object-contain"
                 priority
-                onError={(e) => {
-                   (e.target as any).src = "https://picsum.photos/seed/glitch-logo/300/100";
-                }}
               />
             </a>
             <div className="md:hidden flex items-center gap-4">
@@ -288,11 +283,11 @@ export default function GlitchCoffeeLanding() {
             className="relative w-full aspect-square grayscale overflow-hidden"
           >
             <Image 
-              src={images['hero-coffee']?.imageUrl || "https://picsum.photos/seed/hero/800/800"} 
-              alt="Coffee" 
+              src={images['hero-coffee']?.imageUrl || "/images/hero-coffee.jpg"} 
+              alt="Hero Coffee" 
               fill 
-              className="object-cover hover:scale-110 transition-transform duration-700"
-              data-ai-hint="espresso pour"
+              className="object-cover"
+              priority
             />
           </motion.div>
         </div>
@@ -324,11 +319,10 @@ export default function GlitchCoffeeLanding() {
           </div>
           <div className="relative aspect-video overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
             <Image 
-              src={images['butterscotch-glitch']?.imageUrl || "https://picsum.photos/seed/latte/800/450"} 
-              alt="Butterscotch Glitch" 
+              src={images['butterscotch-glitch']?.imageUrl || "/images/butterscotch.jpg"} 
+              alt="Butterscotch" 
               fill 
               className="object-cover hover:scale-105 transition-transform duration-500" 
-              data-ai-hint="iced latte"
             />
           </div>
         </div>
@@ -343,11 +337,10 @@ export default function GlitchCoffeeLanding() {
           </div>
           <div className="relative aspect-video overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
             <Image 
-              src={images['static-black']?.imageUrl || "https://picsum.photos/seed/black/800/450"} 
-              alt="Static Black" 
+              src={images['static-black']?.imageUrl || "/images/americano.jpg"} 
+              alt="Americano" 
               fill 
               className="object-cover hover:scale-105 transition-transform duration-500"
-              data-ai-hint="black coffee"
             />
           </div>
         </div>
@@ -427,7 +420,7 @@ export default function GlitchCoffeeLanding() {
         </div>
       </Section>
 
-      {/* Instagram Gallery */}
+      {/* Gallery Section */}
       <Section id="gallery">
         <div className="col-span-12 p-8 md:p-16">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
@@ -444,11 +437,10 @@ export default function GlitchCoffeeLanding() {
                 className="relative aspect-square bg-[#111] overflow-hidden grayscale hover:grayscale-0 transition-all cursor-crosshair"
               >
                 <Image 
-                  src={images[id]?.imageUrl || `https://picsum.photos/seed/${id}/600/600`} 
+                  src={images[id]?.imageUrl || `/images/${id}.jpg`} 
                   alt={`Gallery ${idx}`} 
                   fill 
                   className="object-cover" 
-                  data-ai-hint={images[id]?.imageHint || "coffee vibe"}
                 />
               </motion.div>
             ))}
@@ -478,7 +470,7 @@ export default function GlitchCoffeeLanding() {
         <div className="col-span-12 md:col-span-7 grid-line-v min-h-[300px] md:min-h-[400px]">
           <div className="relative w-full h-full grayscale invert contrast-125">
              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15951.7!2d116.948259!3d-1.236625!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMTQnMTIuMCJTIDExNsKwNTYnNTMuNyJF!5e0!3m2!1sen!2sid!4v1600000000000!5m2!1sen!2sid" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8!2d116.948259!3d-1.236625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMTQnMTIuMCJTIDExNsKwNTYnNTMuNyJF!5e0!3m2!1sen!2sid!4v1600000000000!5m2!1sen!2sid" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, minHeight: '300px' }} 
