@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, ChevronDown, ChevronUp } from "lucide-react";
+import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, ChevronDown, ChevronUp, Bike } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -415,13 +415,13 @@ export default function GlitchCoffeeLanding() {
             <div className="flex flex-col gap-4">
               <div className="flex gap-4">
                 <a href={GOFOOD_LINK} target="_blank" rel="noopener noreferrer" className="flex-1">
-                  <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-[#333] transition-colors">
-                    GoFood
+                  <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-[#333] transition-colors flex items-center justify-center gap-2">
+                    <Bike className="w-4 h-4" /> GoFood
                   </Button>
                 </a>
                 <a href={SHOPEE_LINK} target="_blank" rel="noopener noreferrer" className="flex-1">
-                  <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-[#333] transition-colors">
-                    ShopeeFood
+                  <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-[#333] transition-colors flex items-center justify-center gap-2">
+                    <Bike className="w-4 h-4" /> ShopeeFood
                   </Button>
                 </a>
               </div>
@@ -436,8 +436,14 @@ export default function GlitchCoffeeLanding() {
             <Clock className="w-3 h-3 mr-2" /> {t.deliveryHours}
           </p>
         </div>
-        <div className="col-span-12 md:col-span-6 p-8 md:p-16 flex flex-col justify-between bg-white text-black">
-          <div>
+        <div className="col-span-12 md:col-span-6 p-8 md:p-16 flex flex-col justify-between bg-white text-black relative overflow-hidden">
+          {/* Minimalist Bottle Illustration Overlay */}
+          <svg className="absolute bottom-0 right-0 w-32 h-64 text-black/5 -mr-8 -mb-16 pointer-events-none" viewBox="0 0 100 200" fill="currentColor">
+            <path d="M30 20 L70 20 L70 50 L85 70 L85 180 L15 180 L15 70 L30 50 Z" />
+            <rect x="35" y="10" width="30" height="10" />
+          </svg>
+          
+          <div className="relative z-10">
             <h3 className="font-headline font-black text-4xl uppercase mb-4">{t.bottleTitle}</h3>
             <p className="font-body mb-8">
               {t.bottleDesc}
@@ -446,7 +452,7 @@ export default function GlitchCoffeeLanding() {
               {t.joinPO}
             </Button>
           </div>
-          <span className="font-code text-xs uppercase mt-12 block text-center">{t.limitedStock}</span>
+          <span className="font-code text-xs uppercase mt-12 block text-center relative z-10">{t.limitedStock}</span>
         </div>
       </Section>
 
@@ -490,7 +496,7 @@ export default function GlitchCoffeeLanding() {
           </p>
           <div className="flex flex-wrap gap-4">
             <a href={WA_EVENT_LINK} target="_blank" rel="noopener noreferrer">
-              <Button variant="ghost" className="rounded-none font-code uppercase h-12 flex items-center gap-2 transition-colors">
+              <Button variant="outline" className="rounded-none font-code uppercase h-12 flex items-center gap-2 transition-colors border-white hover:bg-white hover:text-black">
                 <PhoneCall className="w-4 h-4" /> {t.contactEvent}
               </Button>
             </a>
@@ -548,17 +554,9 @@ export default function GlitchCoffeeLanding() {
             <h2 className="font-headline font-black text-xs md:text-sm tracking-[0.2em] uppercase mb-12 text-muted-foreground opacity-50">
               {t.footerHeadline}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-2xl mx-auto">
-              <div className="flex flex-col items-center gap-4 font-code text-[10px] uppercase">
-                <span className="text-muted-foreground">Location</span>
-                <span className="whitespace-pre-line leading-relaxed">{t.footerAddress}</span>
-              </div>
-              <div className="flex flex-col items-center gap-4 font-code text-[10px] uppercase">
-                <span className="text-muted-foreground">Social</span>
-                <div className="flex gap-6">
-                  <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a>
-                </div>
-              </div>
+            <div className="flex flex-col items-center gap-4 font-code text-[10px] uppercase max-w-2xl mx-auto">
+              <span className="text-muted-foreground">Location</span>
+              <span className="whitespace-pre-line leading-relaxed text-center">{t.footerAddress}</span>
             </div>
           </div>
           <div className="flex flex-col items-center border-t border-[#333] pt-12">
