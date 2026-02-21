@@ -415,18 +415,18 @@ export default function GlitchCoffeeLanding() {
             <div className="flex flex-col gap-4">
               <div className="flex gap-4">
                 <a href={GOFOOD_LINK} target="_blank" rel="noopener noreferrer" className="flex-1">
-                  <Button className="rounded-none font-code uppercase h-14 w-full bg-[#00AA13] border-[#00AA13] text-white hover:bg-[#008810] transition-colors flex items-center justify-center gap-2">
+                  <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-white/20 hover:border-white hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2">
                     <Bike className="w-4 h-4" /> GoFood
                   </Button>
                 </a>
                 <a href={SHOPEE_LINK} target="_blank" rel="noopener noreferrer" className="flex-1">
-                  <Button className="rounded-none font-code uppercase h-14 w-full bg-[#EE4D2D] border-[#EE4D2D] text-white hover:bg-[#d13d21] transition-colors flex items-center justify-center gap-2">
+                  <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-white/20 hover:border-white hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2">
                     <Bike className="w-4 h-4" /> ShopeeFood
                   </Button>
                 </a>
               </div>
               <a href={WA_ORDER_LINK} target="_blank" rel="noopener noreferrer">
-                <Button className="rounded-none font-code uppercase h-14 w-full bg-[#25D366] border-[#25D366] text-white hover:bg-[#1eb956] transition-colors">
+                <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-white/20 hover:border-white hover:bg-white hover:text-black transition-all">
                   <MessageCircle className="mr-2 h-4 w-4" /> {t.orderWhatsApp}
                 </Button>
               </a>
@@ -496,7 +496,7 @@ export default function GlitchCoffeeLanding() {
           </p>
           <div className="flex flex-wrap gap-4">
             <a href={WA_EVENT_LINK} target="_blank" rel="noopener noreferrer">
-              <Button className="rounded-none font-code uppercase h-12 flex items-center gap-2 transition-colors bg-[#25D366] border-[#25D366] text-white hover:bg-[#1eb956]">
+              <Button variant="outline" className="rounded-none font-code uppercase px-8 h-12 flex items-center gap-2 border-white/20 hover:border-white hover:bg-white hover:text-black transition-all">
                 <PhoneCall className="w-4 h-4" /> {t.contactEvent}
               </Button>
             </a>
