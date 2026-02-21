@@ -4,7 +4,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Glitch Coffee | Step Into The Static',
-  description: 'Minimalist industrial coffee roastery in Jakarta. Duduk, nikmatin kopi, dan jadi diri sendiri aja.',
+  description: 'Minimalist industrial coffee roastery in Jakarta. No need to dress up, just pause and be yourself.',
 };
 
 export default function RootLayout({
