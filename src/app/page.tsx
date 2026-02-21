@@ -32,7 +32,7 @@ const translations = {
     heroCaffeineBoost: "Get your caffeine boost",
     orderWhatsApp: "Order via WhatsApp",
     checkLocation: "Check Location",
-    phiTitle: "Handcrafted,\nUnexpected,\nYours.",
+    phiTitle: "Handcrafted.\nUnexpected.\nYours.",
     phiLabel: "Philosophy — 01",
     phiDesc: "We celebrate the imperfections. The glitches in the everyday routine. Our open-air space is designed for authentic connections and raw experiences. No filters needed.",
     menuSig1: "Signature — 01",
