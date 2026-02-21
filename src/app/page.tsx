@@ -205,10 +205,11 @@ export default function GlitchCoffeeLanding() {
           <div className="col-span-4 p-6 grid-line-v flex items-center justify-between md:justify-start">
             <a href="#hero" className="relative h-10 w-32 grayscale hover:grayscale-0 transition-all">
               <Image 
-                src={images['glitch-logo']?.imageUrl || "https://picsum.photos/seed/glitch-logo/300/100"} 
+                src="/logo.png" 
                 alt="Glitch Coffee Logo"
                 fill
                 className="object-contain"
+                priority
               />
             </a>
             <div className="md:hidden flex items-center gap-4">
