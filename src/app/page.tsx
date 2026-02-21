@@ -2,8 +2,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, ShoppingCart, Menu, ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -43,6 +43,8 @@ const translations = {
     menuDesc2: "Pure, unadulterated, bold. Single origin beans roasted to highlight the complex acidity and clean finish. For the purists.",
     menuFull: "The Full Static",
     menuEssentials: "Menu Essentials",
+    menuShowMore: "Expand Menu",
+    menuShowLess: "Collapse Menu",
     deliveryTitle: "Bring the glitch home",
     deliveryHours: "Daily 09:00 — 21:00",
     bottleTitle: "Bottle Series",
@@ -87,6 +89,8 @@ const translations = {
     menuDesc2: "Murni, tanpa campuran, berani. Biji kopi single origin dipanggang untuk menonjolkan keasaman kompleks dan hasil akhir yang bersih. Untuk para pemurni.",
     menuFull: "The Full Static",
     menuEssentials: "Esensi Menu",
+    menuShowMore: "Lihat Semua",
+    menuShowLess: "Tutup Menu",
     deliveryTitle: "Bawa pulang glitch-mu",
     deliveryHours: "Setiap Hari 09:00 — 21:00",
     bottleTitle: "Bottle Series",
@@ -112,6 +116,52 @@ const translations = {
   }
 };
 
+const menuData = [
+  {
+    category: "MILK BLEND COFFEE",
+    items: [
+      { name: "White Glitch (Kopi Susu Klasik)", price: "18K" },
+      { name: "Tropica Static (Kopi Susu Kelapa)", price: "18K" },
+      { name: "Bit Berry (Kopi Susu Stroberi)", price: "18K" },
+      { name: "Brown Signal (Kopi Susu Aren)", price: "18K" },
+      { name: "Golden Delay (Kopi Susu Karamel)", price: "20K" },
+      { name: "Soft Byte (Kopi Susu Vanila)", price: "20K" },
+      { name: "Pandan Drift (Kopi Susu Pandan)", price: "20K" },
+      { name: "Sunny Peel (Kopi Susu Pisang)", price: "20K" },
+      { name: "Nut Stream (Kopi Susu Hazelnut)", price: "20K" },
+      { name: "Monswift (Kopi Susu Cinnamon)", price: "22K" },
+      { name: "Buttersync (Kopi Susu Butterscotch)", price: "22K" },
+      { name: "Sweetflow (Kopi Susu Caramel Macchiato)", price: "22K" },
+    ]
+  },
+  {
+    category: "NOIR SERIES",
+    items: [
+      { name: "Americano", price: "18K" },
+      { name: "Vietnam Drip", price: "20K" },
+      { name: "Shakerato", price: "20K" },
+      { name: "Extra Shot", price: "5K" },
+    ]
+  },
+  {
+    category: "NON COFFEE",
+    items: [
+      { name: "Dark Error (Coklat)", price: "18K" },
+      { name: "Hazel Core (Coklat Hazelnut)", price: "20K" },
+      { name: "Amber Echo (Coklat Karamel)", price: "20K" },
+      { name: "Red Glint (Red Velvet)", price: "20K" },
+      { name: "Green Pulse (Matcha)", price: "22K" },
+    ]
+  },
+  {
+    category: "FRESH VIBES",
+    items: [
+      { name: "Lychee-T (Teh Leci)", price: "19K" },
+      { name: "Pixelade Blue (Leci Soda)", price: "21K" },
+    ]
+  }
+];
+
 const Section = ({ children, className = "", id = "" }: { children: React.ReactNode, className?: string, id?: string }) => (
   <section id={id} className={`grid-line-h w-full ${className}`}>
     <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 min-h-[100px]">
@@ -130,6 +180,7 @@ const fadeIn = {
 export default function GlitchCoffeeLanding() {
   const [lang, setLang] = useState<"en" | "id">("en");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const t = translations[lang];
   const images = PlaceHolderImages.reduce((acc, img) => ({ ...acc, [img.id]: img }), {} as Record<string, any>);
 
@@ -290,31 +341,39 @@ export default function GlitchCoffeeLanding() {
         </div>
       </Section>
 
-      {/* Additional Menu List */}
+      {/* Additional Menu List - Essentials */}
       <Section>
         <div className="col-span-12 p-8 md:p-16">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
             <h3 className="font-headline font-black text-4xl md:text-5xl uppercase">{t.menuFull}</h3>
             <span className="font-code text-xs text-muted-foreground uppercase">{t.menuEssentials}</span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-4 font-body">
-            {[
-              { name: "Americano", price: "28k" },
-              { name: "Caffe Latte", price: "35k" },
-              { name: "Flat White", price: "35k" },
-              { name: "Cappuccino", price: "35k" },
-              { name: "Manual Brew (V60)", price: "40k" },
-              { name: "Cold Brew Static", price: "38k" },
-              { name: "Glitch Matcha", price: "38k" },
-              { name: "Dark Choco Glitch", price: "38k" },
-              { name: "Lychee Tea", price: "30k" },
-              { name: "Peach Static Tea", price: "30k" },
-            ].map((item, idx) => (
-              <div key={idx} className="flex justify-between py-4 border-b border-[#333] hover:bg-white/5 transition-colors px-2">
-                <span className="uppercase font-bold tracking-tight">{item.name}</span>
-                <span className="font-code text-muted-foreground">{item.price}</span>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+            {menuData.map((cat, catIdx) => (
+              <div key={catIdx} className={`flex flex-col gap-4 ${!isMenuExpanded && catIdx > 0 ? 'hidden md:flex' : ''}`}>
+                <h4 className="font-headline text-lg text-muted-foreground border-b border-[#333] pb-2 mb-2">{cat.category}</h4>
+                <div className="flex flex-col gap-1">
+                  {(isMenuExpanded ? cat.items : cat.items.slice(0, 3)).map((item, idx) => (
+                    <div key={idx} className="flex justify-between py-3 border-b border-[#333]/30 hover:bg-white/5 transition-colors px-2 font-body group">
+                      <span className="uppercase font-bold tracking-tight text-sm md:text-base group-hover:text-white transition-colors">{item.name}</span>
+                      <span className="font-code text-muted-foreground text-sm">{item.price}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-16 flex justify-center">
+            <Button 
+              variant="outline" 
+              onClick={() => setIsMenuExpanded(!isMenuExpanded)}
+              className="rounded-none border-white/20 hover:border-white font-code uppercase px-12 h-14 hover-glitch transition-all"
+            >
+              {isMenuExpanded ? <ChevronUp className="mr-2 h-4 w-4" /> : <ChevronDown className="mr-2 h-4 w-4" />}
+              {isMenuExpanded ? t.menuShowLess : t.menuShowMore}
+            </Button>
           </div>
         </div>
       </Section>
