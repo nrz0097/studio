@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, Menu, ChevronDown, ChevronUp, Bike } from "lucide-react";
+import { Instagram, MapPin, MessageCircle, Clock, HelpCircle, PhoneCall, Languages, Coffee, Menu, ChevronDown, ChevronUp, Bike, Package } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,6 +23,7 @@ const translations = {
   en: {
     navPhilosophy: "Philosophy",
     navMenu: "Menu",
+    navMerch: "Merch",
     navGallery: "Gallery",
     navLocation: "Location",
     navOrder: "Order",
@@ -49,6 +50,9 @@ const translations = {
     bottleDesc: "Enjoy Glitch Coffee anywhere. Pre-order now for delivery everyday. Available in 250ml.",
     joinPO: "SOON!",
     limitedStock: "LIMITED STOCK PER BATCH",
+    merchTitle: "The Glitch Gear",
+    merchLabel: "Limited Drop — 02",
+    merchDesc: "Wear the static. Our exclusive merchandise is designed for those who embrace the unexpected and live authentically.",
     capturedMoments: "Captured Moments",
     followUs: "Follow @glitchcoffee.id",
     eventTitle: "Your Event,\nOur Vibe.",
@@ -68,6 +72,7 @@ const translations = {
   id: {
     navPhilosophy: "Filosofi",
     navMenu: "Menu",
+    navMerch: "Merch",
     navGallery: "Galeri",
     navLocation: "Lokasi",
     navOrder: "Pesan",
@@ -94,6 +99,9 @@ const translations = {
     bottleDesc: "Nikmatin Glitch Coffee di mana aja. Pre-order sekarang untuk pengiriman setiap hari. Tersedia dalam ukuran 250ml.",
     joinPO: "SEGERA!",
     limitedStock: "STOK TERBATAS PER BATCH",
+    merchTitle: "The Glitch Gear",
+    merchLabel: "Rilisan Terbatas — 02",
+    merchDesc: "Pakai static-mu. Merchandise eksklusif kami dirancang untuk mereka yang merayakan ketidakterdugaan dan hidup murni.",
     capturedMoments: "Momen Tertangkap",
     followUs: "Ikuti @glitchcoffee.id",
     eventTitle: "Acara Anda,\nVibe Kami.",
@@ -207,9 +215,8 @@ export default function GlitchCoffeeLanding() {
     <>
       <a href="#philosophy" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navPhilosophy}</a>
       <a href="#menu" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navMenu}</a>
-      <a href="#delivery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">
-        {t.navOrder}
-      </a>
+      <a href="#merchandise" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navMerch}</a>
+      <a href="#delivery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navOrder}</a>
       <a href="#gallery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navGallery}</a>
       <a href="#location" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-muted-foreground transition-colors uppercase font-code tracking-tight">{t.navLocation}</a>
     </>
@@ -437,7 +444,7 @@ export default function GlitchCoffeeLanding() {
           </p>
         </div>
         <div className="col-span-12 md:col-span-6 p-8 md:p-16 flex flex-col justify-between bg-white text-black relative overflow-hidden">
-          {/* Minimalist Bottle Illustration Overlay - Visibility Increased */}
+          {/* Minimalist Bottle Illustration Overlay */}
           <svg className="absolute bottom-0 right-0 w-32 h-64 text-black/15 -mr-8 -mb-16 pointer-events-none" viewBox="0 0 100 200" fill="currentColor">
             <path d="M30 20 L70 20 L70 50 L85 70 L85 180 L15 180 L15 70 L30 50 Z" />
             <rect x="35" y="10" width="30" height="10" />
@@ -453,6 +460,47 @@ export default function GlitchCoffeeLanding() {
             </Button>
           </div>
           <span className="font-code text-xs uppercase mt-12 block text-center relative z-10">{t.limitedStock}</span>
+        </div>
+      </Section>
+
+      {/* Merchandise Section */}
+      <Section id="merchandise">
+        <div className="col-span-12 md:col-span-4 p-8 md:p-16 grid-line-v flex flex-col justify-between bg-[#080808]">
+          <motion.div {...fadeIn}>
+            <span className="font-code text-xs text-muted-foreground uppercase tracking-widest mb-4 block">{t.merchLabel}</span>
+            <h3 className="font-headline font-black text-4xl uppercase mb-8 whitespace-pre-line">{t.merchTitle}</h3>
+            <p className="font-body text-muted-foreground mb-8">
+              {t.merchDesc}
+            </p>
+          </motion.div>
+          <div className="mt-8">
+             <Button variant="outline" className="rounded-none border-white/20 hover:border-white font-code uppercase px-8 h-12 transition-all flex items-center gap-2">
+                <Package className="w-4 h-4" /> {t.joinPO}
+             </Button>
+          </div>
+        </div>
+        <div className="col-span-12 md:col-span-8 p-8 md:p-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-full">
+            {[1, 2, 3, 4].map((i) => (
+              <motion.div 
+                key={i}
+                whileHover={{ scale: 0.98 }}
+                className="relative aspect-[3/4] bg-[#111] overflow-hidden grayscale hover:grayscale-0 transition-all border border-[#333]/30 group"
+              >
+                {/* Empty slots for user to fill later */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity">
+                   <span className="font-code text-[10px] uppercase">Slot {i}</span>
+                </div>
+                <Image 
+                  src={`/images/merch-${i}.jpg`} 
+                  alt={`Merch ${i}`} 
+                  fill 
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover opacity-0" // Hide until user provides images
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </Section>
 
