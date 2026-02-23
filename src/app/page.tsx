@@ -490,18 +490,27 @@ export default function GlitchCoffeeLanding() {
               <motion.div 
                 key={i}
                 whileHover={{ scale: 0.98 }}
-                className="relative aspect-[3/4] bg-[#111] overflow-hidden grayscale hover:grayscale-0 transition-all border border-[#333]/30 group"
+                className="relative aspect-[3/4] bg-[#111] overflow-hidden grayscale hover:grayscale-0 transition-all border border-[#333]/30 group cursor-pointer"
               >
-                <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity">
-                   <span className="font-code text-[10px] uppercase">Slot {i}</span>
-                </div>
+                {/* Front Image */}
                 <Image 
-                  src={`/images/merch-${i}.jpg`} 
-                  alt={`Merch ${i}`} 
+                  src={`/images/merch-${i}-front.jpg`} 
+                  alt={`Merch ${i} Front`} 
                   fill 
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover opacity-0"
+                  className="object-cover transition-opacity duration-500 group-hover:opacity-0"
                 />
+                {/* Back Image (Hover) */}
+                <Image 
+                  src={`/images/merch-${i}-back.jpg`} 
+                  alt={`Merch ${i} Back`} 
+                  fill 
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                  className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                />
+                <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-10 transition-opacity pointer-events-none">
+                   <span className="font-code text-[10px] uppercase">Slot {i}</span>
+                </div>
               </motion.div>
             ))}
           </div>
