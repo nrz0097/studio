@@ -46,10 +46,10 @@ const translations = {
     menuShowLess: "Collapse Menu",
     deliveryTitle: "Bring the glitch home",
     deliveryHours: "Tuesday - Sunday 15:00 — 23:00",
-    bottleTitle: "GLITCH POCKET",
-    bottleDesc: "Enjoy Glitch Coffee anywhere. Pre-order now for delivery everyday. Available in 250ml.",
-    joinPO: "SOON!",
-    limitedStock: "LIMITED STOCK PER BATCH",
+    bottleTitle: "GLITCH MODULE",
+    bottleDesc: "Enjoy Glitch Coffee in every format. Engineered for delivery, ready on demand. Available in 250 ml. Larger formats coming soon.",
+    joinPO: "ORDER NOW!",
+    limitedStock: "LIMITED PER PRODUCTION CYCLE",
     merchTitle: "The Glitch Gear",
     merchLabel: "Limited Drop — 02",
     merchDesc: "Wear the static. Our exclusive merchandise is designed for those who embrace the unexpected and live authentically.",
@@ -95,10 +95,10 @@ const translations = {
     menuShowLess: "Tutup Menu",
     deliveryTitle: "Bawa pulang glitch-mu",
     deliveryHours: "Selasa - Minggu 15:00 — 23:00",
-    bottleTitle: "GLITCH POCKET",
-    bottleDesc: "Nikmatin Glitch Coffee di mana aja. Pre-order sekarang untuk pengiriman setiap hari. Tersedia dalam ukuran 250ml.",
-    joinPO: "SEGERA!",
-    limitedStock: "STOK TERBATAS PER BATCH",
+    bottleTitle: "GLITCH MODUL",
+    bottleDesc: "Nikmati Glitch Coffee di setiap format. Dirancang untuk pengiriman, siap on-demand. 250 ml tersedia. Ukuran lain segera hadir.",
+    joinPO: "PESAN SEKARANG!",
+    limitedStock: "PRODUKSI TERBATAS PER BATCH",
     merchTitle: "The Glitch Gear",
     merchLabel: "Rilisan Terbatas — 02",
     merchDesc: "Pakai static-mu. Merchandise eksklusif kami dirancang untuk mereka yang merayakan ketidakterdugaan dan hidup murni.",
@@ -190,6 +190,7 @@ export default function GlitchCoffeeLanding() {
 
   const IG_LINK = "https://www.instagram.com/glitchcoffee.id/";
   const WA_ORDER_LINK = "https://wa.me/6289527539529?text=Halo%20kak%2C%20aku%20mau%20order%20Glitch%20Coffee%20nya%20dong!";
+  const WA_PO_LINK = "https://wa.me/6289527539529?text=Halo%20kak%2C%20aku%20mau%20PO%20Glitch%20Modulenya%20dong!";
   const GOFOOD_LINK = "https://gofood.co.id/balikpapan/restaurant/toko-kopi-glitch-coffee-stadion-batakan--f5005098-6a23-40fe-8b0e-79b0126191b6";
   const SHOPEE_LINK = "https://shopee.co.id/now-food/shop/22328224?deep_and_deferred=1&shareChannel=copy_link&stm_medium=referral&stm_source=https%3A%2F%2Flnk.bio%2F-rw&uls_trackid=54vtd5gl00pv";
   const WA_EVENT_LINK = "https://wa.me/6289527539529?text=Halo%20kak%2C%20aku%20mau%20tanya-tanya%20untuk%20event%20dong!";
@@ -455,9 +456,11 @@ export default function GlitchCoffeeLanding() {
             <p className="font-body mb-8">
               {t.bottleDesc}
             </p>
-            <Button variant="default" className="bg-black text-white hover:bg-zinc-800 rounded-none font-code uppercase w-full h-14 transition-colors">
-              {t.joinPO}
-            </Button>
+            <a href={WA_PO_LINK} target="_blank" rel="noopener noreferrer">
+              <Button variant="default" className="bg-black text-white hover:bg-zinc-800 rounded-none font-code uppercase w-full h-14 transition-colors">
+                {t.joinPO}
+              </Button>
+            </a>
           </div>
           <span className="font-code text-xs uppercase mt-12 block text-center relative z-10">{t.limitedStock}</span>
         </div>
@@ -474,9 +477,11 @@ export default function GlitchCoffeeLanding() {
             </p>
           </motion.div>
           <div className="mt-8">
-             <Button variant="outline" className="rounded-none border-white/20 hover:border-white font-code uppercase px-8 h-12 transition-all flex items-center gap-2">
-                <Package className="w-4 h-4" /> {t.joinPO}
-             </Button>
+             <a href={WA_PO_LINK} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="rounded-none border-white/20 hover:border-white font-code uppercase px-8 h-12 transition-all flex items-center gap-2">
+                   <Package className="w-4 h-4" /> {t.joinPO}
+                </Button>
+             </a>
           </div>
         </div>
         <div className="col-span-12 md:col-span-8 p-8 md:p-16">
@@ -487,7 +492,6 @@ export default function GlitchCoffeeLanding() {
                 whileHover={{ scale: 0.98 }}
                 className="relative aspect-[3/4] bg-[#111] overflow-hidden grayscale hover:grayscale-0 transition-all border border-[#333]/30 group"
               >
-                {/* Empty slots for user to fill later */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity">
                    <span className="font-code text-[10px] uppercase">Slot {i}</span>
                 </div>
@@ -496,7 +500,7 @@ export default function GlitchCoffeeLanding() {
                   alt={`Merch ${i}`} 
                   fill 
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover opacity-0" // Hide until user provides images
+                  className="object-cover opacity-0"
                 />
               </motion.div>
             ))}
