@@ -233,169 +233,169 @@ export default function GlitchCoffeeLanding() {
   );
 
   return (
-    <main className="min-h-screen bg-black overflow-x-hidden">
-      {/* Header */}
-      <header className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md z-50 grid-line-h">
-        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12">
-          <div className="col-span-4 p-6 grid-line-v flex items-center justify-between md:justify-start">
-            <a href="#hero" className="flex items-center h-8 md:h-10">
-              <Image 
-                src="/logo.png" 
-                alt="Glitch Coffee Logo"
-                width={200}
-                height={60}
-                className="h-full w-auto object-contain"
-                priority
-              />
-            </a>
-            <div className="md:hidden flex items-center gap-4">
+    <TooltipProvider delayDuration={200}>
+      <main className="min-h-screen bg-black overflow-x-hidden">
+        {/* Header */}
+        <header className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md z-50 grid-line-h">
+          <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12">
+            <div className="col-span-4 p-6 grid-line-v flex items-center justify-between md:justify-start">
+              <a href="#hero" className="flex items-center h-8 md:h-10">
+                <Image 
+                  src="/logo.png" 
+                  alt="Glitch Coffee Logo"
+                  width={200}
+                  height={60}
+                  className="h-full w-auto object-contain"
+                  priority
+                />
+              </a>
+              <div className="md:hidden flex items-center gap-4">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => setLang(lang === "en" ? "id" : "en")}
+                  className="font-code text-xs uppercase p-0 h-auto hover:bg-transparent flex items-center gap-2"
+                >
+                  {lang === "en" ? "ID" : "EN"}
+                </Button>
+                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                  <SheetTrigger asChild>
+                    <Button variant="ghost" size="icon" className="p-0 h-auto w-auto hover:bg-transparent">
+                      <Menu className="w-6 h-6 text-white" />
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="right" className="bg-black border-l border-[#333] text-white p-12">
+                    <SheetHeader className="text-left mb-8">
+                      <SheetTitle className="text-white uppercase font-headline">Navigation</SheetTitle>
+                    </SheetHeader>
+                    <div className="flex flex-col gap-8 font-code text-lg">
+                      <NavLinks />
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              </div>
+            </div>
+            <nav className="col-span-8 p-6 hidden md:flex justify-end gap-6 items-center font-code text-xs">
+              <NavLinks />
               <Button 
                 variant="ghost" 
                 size="sm" 
                 onClick={() => setLang(lang === "en" ? "id" : "en")}
                 className="font-code text-xs uppercase p-0 h-auto hover:bg-transparent flex items-center gap-2"
               >
+                <Languages className="w-3 h-3" />
                 {lang === "en" ? "ID" : "EN"}
               </Button>
-              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="p-0 h-auto w-auto hover:bg-transparent">
-                    <Menu className="w-6 h-6 text-white" />
+            </nav>
+          </div>
+        </header>
+
+        {/* Hero Section */}
+        <Section id="hero" className="pt-24 md:pt-32 min-h-screen flex items-center">
+          <div className="col-span-12 md:col-span-8 p-8 md:p-16 flex flex-col justify-center grid-line-v">
+            <motion.div {...fadeIn}>
+              <span className="font-code text-xs text-muted-foreground uppercase tracking-widest mb-4 block">{t.heroEst}</span>
+              <h1 className="font-headline font-black text-6xl md:text-9xl tracking-tighter uppercase leading-[0.85] mb-8 whitespace-pre-line glitch-headline">
+                {t.heroHeadline}
+              </h1>
+              <p className="font-body text-lg md:text-xl text-muted-foreground max-w-xl mb-12">
+                {t.heroDesc}
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a href="#delivery">
+                  <Button variant="outline" className="rounded-none border-white hover:bg-white hover:text-black font-code uppercase px-8 h-12 transition-colors">
+                    <Coffee className="mr-2 h-4 w-4" /> {t.heroCaffeineBoost}
                   </Button>
-                </SheetTrigger>
-                <SheetContent side="right" className="bg-black border-l border-[#333] text-white p-12">
-                  <SheetHeader className="text-left mb-8">
-                    <SheetTitle className="text-white uppercase font-headline">Navigation</SheetTitle>
-                  </SheetHeader>
-                  <div className="flex flex-col gap-8 font-code text-lg">
-                    <NavLinks />
-                  </div>
-                </SheetContent>
-              </Sheet>
-            </div>
+                </a>
+                <a href="#location">
+                  <Button variant="secondary" className="rounded-none font-code uppercase px-8 h-12 transition-colors">
+                    <MapPin className="mr-2 h-4 w-4" /> {t.checkLocation}
+                  </Button>
+                </a>
+              </div>
+            </motion.div>
           </div>
-          <nav className="col-span-8 p-6 hidden md:flex justify-end gap-6 items-center font-code text-xs">
-            <NavLinks />
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              onClick={() => setLang(lang === "en" ? "id" : "en")}
-              className="font-code text-xs uppercase p-0 h-auto hover:bg-transparent flex items-center gap-2"
+          <div className="col-span-12 md:col-span-4 p-8 flex items-center justify-center bg-[#111]">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="relative w-full aspect-square overflow-hidden"
             >
-              <Languages className="w-3 h-3" />
-              {lang === "en" ? "ID" : "EN"}
-            </Button>
-          </nav>
-        </div>
-      </header>
+              <Image 
+                src="/images/hero-coffee.jpg" 
+                alt="Hero Coffee" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover"
+                priority
+              />
+            </motion.div>
+          </div>
+        </Section>
 
-      {/* Hero Section */}
-      <Section id="hero" className="pt-24 md:pt-32 min-h-screen flex items-center">
-        <div className="col-span-12 md:col-span-8 p-8 md:p-16 flex flex-col justify-center grid-line-v">
-          <motion.div {...fadeIn}>
-            <span className="font-code text-xs text-muted-foreground uppercase tracking-widest mb-4 block">{t.heroEst}</span>
-            <h1 className="font-headline font-black text-6xl md:text-9xl tracking-tighter uppercase leading-[0.85] mb-8 whitespace-pre-line glitch-headline">
-              {t.heroHeadline}
-            </h1>
-            <p className="font-body text-lg md:text-xl text-muted-foreground max-w-xl mb-12">
-              {t.heroDesc}
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <a href="#delivery">
-                <Button variant="outline" className="rounded-none border-white hover:bg-white hover:text-black font-code uppercase px-8 h-12 transition-colors">
-                  <Coffee className="mr-2 h-4 w-4" /> {t.heroCaffeineBoost}
-                </Button>
-              </a>
-              <a href="#location">
-                <Button variant="secondary" className="rounded-none font-code uppercase px-8 h-12 transition-colors">
-                  <MapPin className="mr-2 h-4 w-4" /> {t.checkLocation}
-                </Button>
-              </a>
+        {/* Philosophy Section */}
+        <Section id="philosophy">
+          <div className="col-span-12 md:col-span-4 p-8 md:p-16 grid-line-v flex flex-col justify-between">
+            <motion.h3 {...fadeIn} className="font-headline font-black text-3xl uppercase whitespace-pre-line">{t.phiTitle}</motion.h3>
+            <div className="font-code text-xs text-muted-foreground uppercase mt-8">{t.phiLabel}</div>
+          </div>
+          <div className="col-span-12 md:col-span-8 p-8 md:p-16 flex flex-col justify-center">
+            <motion.p {...fadeIn} className="font-body text-2xl md:text-4xl leading-tight">
+              {t.phiDesc}
+            </motion.p>
+          </div>
+        </Section>
+
+        {/* Product Deep Dive - SIGNATURE SECTION */}
+        <Section>
+          <div className="col-span-12 md:col-span-6 p-0 grid-line-v">
+            <div className="p-8 md:p-16 grid-line-h">
+              <span className="font-code text-xs text-muted-foreground uppercase mb-4 block">{t.menuSig1}</span>
+              <h4 className="font-headline font-black text-4xl uppercase mb-4">Buttersync</h4>
+              <p className="font-body text-muted-foreground mb-8">
+                {t.menuDesc1}
+              </p>
+              <span className="font-code text-xl">IDR 22.000</span>
             </div>
-          </motion.div>
-        </div>
-        <div className="col-span-12 md:col-span-4 p-8 flex items-center justify-center bg-[#111]">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="relative w-full aspect-square overflow-hidden"
-          >
-            <Image 
-              src="/images/hero-coffee.jpg" 
-              alt="Hero Coffee" 
-              fill 
-              sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-        </div>
-      </Section>
+            <div className="relative aspect-video overflow-hidden transition-all duration-500">
+              <Image 
+                src="/images/butterscotch.jpg" 
+                alt="Butterscotch" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover hover:scale-105 transition-transform duration-500" 
+              />
+            </div>
+          </div>
+          <div className="col-span-12 md:col-span-6 p-0">
+            <div className="p-8 md:p-16 grid-line-h">
+              <span className="font-code text-xs text-muted-foreground uppercase mb-4 block">{t.menuSig2}</span>
+              <h4 className="font-headline font-black text-4xl uppercase mb-4">Americano</h4>
+              <p className="font-body text-muted-foreground mb-8">
+                {t.menuDesc2}
+              </p>
+              <span className="font-code text-xl">IDR 18.000</span>
+            </div>
+            <div className="relative aspect-video overflow-hidden transition-all duration-500">
+              <Image 
+                src="/images/americano.jpg" 
+                alt="Americano" 
+                fill 
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+        </Section>
 
-      {/* Philosophy Section */}
-      <Section id="philosophy">
-        <div className="col-span-12 md:col-span-4 p-8 md:p-16 grid-line-v flex flex-col justify-between">
-          <motion.h3 {...fadeIn} className="font-headline font-black text-3xl uppercase whitespace-pre-line">{t.phiTitle}</motion.h3>
-          <div className="font-code text-xs text-muted-foreground uppercase mt-8">{t.phiLabel}</div>
-        </div>
-        <div className="col-span-12 md:col-span-8 p-8 md:p-16 flex flex-col justify-center">
-          <motion.p {...fadeIn} className="font-body text-2xl md:text-4xl leading-tight">
-            {t.phiDesc}
-          </motion.p>
-        </div>
-      </Section>
-
-      {/* Product Deep Dive - SIGNATURE SECTION */}
-      <Section>
-        <div className="col-span-12 md:col-span-6 p-0 grid-line-v">
-          <div className="p-8 md:p-16 grid-line-h">
-            <span className="font-code text-xs text-muted-foreground uppercase mb-4 block">{t.menuSig1}</span>
-            <h4 className="font-headline font-black text-4xl uppercase mb-4">Buttersync</h4>
-            <p className="font-body text-muted-foreground mb-8">
-              {t.menuDesc1}
-            </p>
-            <span className="font-code text-xl">IDR 22.000</span>
-          </div>
-          <div className="relative aspect-video overflow-hidden transition-all duration-500">
-            <Image 
-              src="/images/butterscotch.jpg" 
-              alt="Butterscotch" 
-              fill 
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover hover:scale-105 transition-transform duration-500" 
-            />
-          </div>
-        </div>
-        <div className="col-span-12 md:col-span-6 p-0">
-          <div className="p-8 md:p-16 grid-line-h">
-            <span className="font-code text-xs text-muted-foreground uppercase mb-4 block">{t.menuSig2}</span>
-            <h4 className="font-headline font-black text-4xl uppercase mb-4">Americano</h4>
-            <p className="font-body text-muted-foreground mb-8">
-              {t.menuDesc2}
-            </p>
-            <span className="font-code text-xl">IDR 18.000</span>
-          </div>
-          <div className="relative aspect-video overflow-hidden transition-all duration-500">
-            <Image 
-              src="/images/americano.jpg" 
-              alt="Americano" 
-              fill 
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-        </div>
-      </Section>
-
-      {/* Additional Menu List - Essentials */}
-      <Section id="menu">
-        <div className="col-span-12 p-8 md:p-16">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
-            <h3 className="font-headline font-black text-4xl md:text-5xl uppercase">{t.menuFull}</h3>
-            <span className="font-code text-xs text-muted-foreground uppercase">{t.menuEssentials}</span>
-          </div>
-          
-          <TooltipProvider>
+        {/* Additional Menu List - Essentials */}
+        <Section id="menu">
+          <div className="col-span-12 p-8 md:p-16">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+              <h3 className="font-headline font-black text-4xl md:text-5xl uppercase">{t.menuFull}</h3>
+              <span className="font-code text-xs text-muted-foreground uppercase">{t.menuEssentials}</span>
+            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
               {menuData.map((cat, catIdx) => (
                 <div key={catIdx} className="flex flex-col gap-4">
@@ -412,7 +412,7 @@ export default function GlitchCoffeeLanding() {
                             {description ? (
                               <Tooltip>
                                 <TooltipTrigger asChild>
-                                  <span className="uppercase font-bold tracking-tight text-sm md:text-base group-hover:text-white transition-colors cursor-help border-b border-dashed border-white/20">
+                                  <span className="uppercase font-bold tracking-tight text-sm md:text-base group-hover:text-white transition-colors cursor-default border-b border-dashed border-white/20">
                                     {mainName}
                                   </span>
                                 </TooltipTrigger>
@@ -434,246 +434,246 @@ export default function GlitchCoffeeLanding() {
                 </div>
               ))}
             </div>
-          </TooltipProvider>
 
-          <div className="mt-16 flex justify-center">
-            <Button 
-              variant="outline" 
-              onClick={() => setIsMenuExpanded(!isMenuExpanded)}
-              className="rounded-none border-white/20 hover:border-white font-code uppercase px-12 h-14 transition-all"
-            >
-              {isMenuExpanded ? <ChevronUp className="mr-2 h-4 w-4" /> : <ChevronDown className="mr-2 h-4 w-4" />}
-              {isMenuExpanded ? t.menuShowLess : t.menuShowMore}
-            </Button>
+            <div className="mt-16 flex justify-center">
+              <Button 
+                variant="outline" 
+                onClick={() => setIsMenuExpanded(!isMenuExpanded)}
+                className="rounded-none border-white/20 hover:border-white font-code uppercase px-12 h-14 transition-all"
+              >
+                {isMenuExpanded ? <ChevronUp className="mr-2 h-4 w-4" /> : <ChevronDown className="mr-2 h-4 w-4" />}
+                {isMenuExpanded ? t.menuShowLess : t.menuShowMore}
+              </Button>
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
 
-      {/* Online Delivery & Bottle Series */}
-      <Section id="delivery">
-        <div className="col-span-12 md:col-span-6 p-8 md:p-16 grid-line-v flex flex-col justify-between">
-          <div>
-            <h3 className="font-headline font-black text-4xl uppercase mb-8">{t.deliveryTitle}</h3>
-            <div className="flex flex-col gap-4">
-              <div className="flex gap-4">
-                <a href={GOFOOD_LINK} target="_blank" rel="noopener noreferrer" className="flex-1">
-                  <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-white/20 hover:border-white hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2">
-                    <Bike className="w-4 h-4" /> GoFood
-                  </Button>
-                </a>
-                <a href={SHOPEE_LINK} target="_blank" rel="noopener noreferrer" className="flex-1">
-                  <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-white/20 hover:border-white hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2">
-                    <Bike className="w-4 h-4" /> ShopeeFood
+        {/* Online Delivery & Bottle Series */}
+        <Section id="delivery">
+          <div className="col-span-12 md:col-span-6 p-8 md:p-16 grid-line-v flex flex-col justify-between">
+            <div>
+              <h3 className="font-headline font-black text-4xl uppercase mb-8">{t.deliveryTitle}</h3>
+              <div className="flex flex-col gap-4">
+                <div className="flex gap-4">
+                  <a href={GOFOOD_LINK} target="_blank" rel="noopener noreferrer" className="flex-1">
+                    <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-white/20 hover:border-white hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2">
+                      <Bike className="w-4 h-4" /> GoFood
+                    </Button>
+                  </a>
+                  <a href={SHOPEE_LINK} target="_blank" rel="noopener noreferrer" className="flex-1">
+                    <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-white/20 hover:border-white hover:bg-white hover:text-black transition-all flex items-center justify-center gap-2">
+                      <Bike className="w-4 h-4" /> ShopeeFood
+                    </Button>
+                  </a>
+                </div>
+                <a href={WA_ORDER_LINK} target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-white/20 hover:border-white hover:bg-white hover:text-black transition-all">
+                    <MessageCircle className="mr-2 h-4 w-4" /> {t.orderWhatsApp}
                   </Button>
                 </a>
               </div>
-              <a href={WA_ORDER_LINK} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" className="rounded-none font-code uppercase h-14 w-full border-white/20 hover:border-white hover:bg-white hover:text-black transition-all">
-                  <MessageCircle className="mr-2 h-4 w-4" /> {t.orderWhatsApp}
+            </div>
+            <p className="font-code text-xs text-muted-foreground uppercase mt-12 tracking-widest flex items-center">
+              <Clock className="w-3 h-3 mr-2" /> {t.deliveryHours}
+            </p>
+          </div>
+          <div className="col-span-12 md:col-span-6 p-8 md:p-16 flex flex-col justify-between bg-white text-black relative overflow-hidden">
+            {/* Minimalist Bottle Illustration Overlay */}
+            <svg className="absolute bottom-0 right-0 w-32 h-64 text-black/25 -mr-8 -mb-16 pointer-events-none opacity-60" viewBox="0 0 100 200" fill="currentColor">
+              <path d="M30 20 L70 20 L70 50 L85 70 L85 180 L15 180 L15 70 L30 50 Z" />
+              <rect x="35" y="10" width="30" height="10" />
+            </svg>
+            
+            <div className="relative z-10">
+              <h3 className="font-headline font-black text-4xl uppercase mb-4">{t.bottleTitle}</h3>
+              <p className="font-body mb-8">
+                {t.bottleDesc}
+              </p>
+              <a href={WA_PO_LINK} target="_blank" rel="noopener noreferrer">
+                <Button variant="default" className="bg-black text-white hover:bg-zinc-800 rounded-none font-code uppercase w-full h-14 transition-colors">
+                  {t.joinPO}
+                </Button>
+              </a>
+            </div>
+            <span className="font-code text-xs uppercase mt-12 block text-center relative z-10">{t.limitedStock}</span>
+          </div>
+        </Section>
+
+        {/* Merchandise Section */}
+        <Section id="merchandise">
+          <div className="col-span-12 md:col-span-4 p-8 md:p-16 grid-line-v flex flex-col justify-between bg-[#080808]">
+            <motion.div {...fadeIn}>
+              <span className="font-code text-xs text-muted-foreground uppercase tracking-widest mb-4 block">{t.merchLabel}</span>
+              <h3 className="font-headline font-black text-4xl uppercase mb-8 whitespace-pre-line">{t.merchTitle}</h3>
+              <p className="font-body text-muted-foreground mb-8">
+                {t.merchDesc}
+              </p>
+            </motion.div>
+            <div className="mt-8">
+               <a href={WA_PO_LINK} target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" className="rounded-none border-white/20 hover:border-white font-code uppercase px-8 h-12 transition-all flex items-center gap-2">
+                     <Package className="w-4 h-4" /> {t.merchPO}
+                  </Button>
+               </a>
+            </div>
+          </div>
+          <div className="col-span-12 md:col-span-8 p-8 md:p-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-full">
+              {[1, 2, 3, 4].map((i) => (
+                <motion.div 
+                  key={i}
+                  whileHover={{ scale: 0.98 }}
+                  className="relative aspect-[3/4] bg-[#111] overflow-hidden transition-all border border-[#333]/30 group cursor-pointer"
+                >
+                  {/* Front Image */}
+                  <Image 
+                    src={`/images/merch-${i}-front.jpg`} 
+                    alt={`Merch ${i} Front`} 
+                    fill 
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover transition-opacity duration-500 group-hover:opacity-0"
+                  />
+                  {/* Back Image (Hover) */}
+                  <Image 
+                    src={`/images/merch-${i}-back.jpg`} 
+                    alt={`Merch ${i} Back`} 
+                    fill 
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* Gallery Section */}
+        <Section id="gallery">
+          <div className="col-span-12 p-8 md:p-16">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
+              <h3 className="font-headline font-black text-4xl md:text-5xl uppercase">{t.capturedMoments}</h3>
+              <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="font-code text-xs flex items-center hover:underline uppercase">
+                <Instagram className="w-4 h-4 mr-2" /> {t.followUs}
+              </a>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {['gallery-1', 'gallery-2', 'gallery-3', 'gallery-4', 'gallery-5', 'gallery-6', 'hero-coffee', 'americano'].map((id, idx) => (
+                <motion.div 
+                  key={idx}
+                  whileHover={{ scale: 0.98 }}
+                  className="relative aspect-square bg-[#111] overflow-hidden transition-all cursor-crosshair"
+                >
+                  <Image 
+                    src={`/images/${id}.jpg`} 
+                    alt={`Gallery ${idx}`} 
+                    fill 
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-cover" 
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* Event & Gathering */}
+        <Section>
+          <div className="col-span-12 md:col-span-4 p-8 md:p-16 grid-line-v flex flex-col justify-center bg-[#111]">
+            <h3 className="font-headline font-black text-4xl md:text-5xl uppercase mb-6 leading-none whitespace-pre-line">{t.eventTitle}</h3>
+          </div>
+          <div className="col-span-12 md:col-span-8 p-8 md:p-16 flex flex-col justify-center">
+            <p className="font-body text-xl md:text-2xl mb-12">
+              {t.eventDesc}
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a href={WA_EVENT_LINK} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="rounded-none font-code uppercase px-8 h-12 flex items-center gap-2 border-white/20 hover:border-white hover:bg-white hover:text-black transition-all">
+                  <PhoneCall className="w-4 h-4" /> {t.contactEvent}
                 </Button>
               </a>
             </div>
           </div>
-          <p className="font-code text-xs text-muted-foreground uppercase mt-12 tracking-widest flex items-center">
-            <Clock className="w-3 h-3 mr-2" /> {t.deliveryHours}
-          </p>
-        </div>
-        <div className="col-span-12 md:col-span-6 p-8 md:p-16 flex flex-col justify-between bg-white text-black relative overflow-hidden">
-          {/* Minimalist Bottle Illustration Overlay */}
-          <svg className="absolute bottom-0 right-0 w-32 h-64 text-black/25 -mr-8 -mb-16 pointer-events-none opacity-60" viewBox="0 0 100 200" fill="currentColor">
-            <path d="M30 20 L70 20 L70 50 L85 70 L85 180 L15 180 L15 70 L30 50 Z" />
-            <rect x="35" y="10" width="30" height="10" />
-          </svg>
-          
-          <div className="relative z-10">
-            <h3 className="font-headline font-black text-4xl uppercase mb-4">{t.bottleTitle}</h3>
-            <p className="font-body mb-8">
-              {t.bottleDesc}
-            </p>
-            <a href={WA_PO_LINK} target="_blank" rel="noopener noreferrer">
-              <Button variant="default" className="bg-black text-white hover:bg-zinc-800 rounded-none font-code uppercase w-full h-14 transition-colors">
-                {t.joinPO}
-              </Button>
-            </a>
-          </div>
-          <span className="font-code text-xs uppercase mt-12 block text-center relative z-10">{t.limitedStock}</span>
-        </div>
-      </Section>
+        </Section>
 
-      {/* Merchandise Section */}
-      <Section id="merchandise">
-        <div className="col-span-12 md:col-span-4 p-8 md:p-16 grid-line-v flex flex-col justify-between bg-[#080808]">
-          <motion.div {...fadeIn}>
-            <span className="font-code text-xs text-muted-foreground uppercase tracking-widest mb-4 block">{t.merchLabel}</span>
-            <h3 className="font-headline font-black text-4xl uppercase mb-8 whitespace-pre-line">{t.merchTitle}</h3>
-            <p className="font-body text-muted-foreground mb-8">
-              {t.merchDesc}
-            </p>
-          </motion.div>
-          <div className="mt-8">
-             <a href={WA_PO_LINK} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" className="rounded-none border-white/20 hover:border-white font-code uppercase px-8 h-12 transition-all flex items-center gap-2">
-                   <Package className="w-4 h-4" /> {t.merchPO}
-                </Button>
-             </a>
-          </div>
-        </div>
-        <div className="col-span-12 md:col-span-8 p-8 md:p-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 h-full">
-            {[1, 2, 3, 4].map((i) => (
-              <motion.div 
-                key={i}
-                whileHover={{ scale: 0.98 }}
-                className="relative aspect-[3/4] bg-[#111] overflow-hidden transition-all border border-[#333]/30 group cursor-pointer"
-              >
-                {/* Front Image */}
-                <Image 
-                  src={`/images/merch-${i}-front.jpg`} 
-                  alt={`Merch ${i} Front`} 
-                  fill 
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover transition-opacity duration-500 group-hover:opacity-0"
+        {/* Location & FAQ */}
+        <Section id="location">
+          <div className="col-span-12 md:col-span-7 grid-line-v min-h-[300px] md:min-h-[400px]">
+            <div className="relative w-full h-full">
+               <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.825264356877!2d116.94825909951066!3d-1.236624933906585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df1490064d5c5f3%3A0xab3ae5f90f00daaf!2sGLITCH%20COFFEE!5e0!3m2!1sid!2sid!4v1771649451092!5m2!1sid!2sid" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0, minHeight: '300px' }} 
+                  allowFullScreen={false} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
                 />
-                {/* Back Image (Hover) */}
-                <Image 
-                  src={`/images/merch-${i}-back.jpg`} 
-                  alt={`Merch ${i} Back`} 
-                  fill 
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* Gallery Section */}
-      <Section id="gallery">
-        <div className="col-span-12 p-8 md:p-16">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
-            <h3 className="font-headline font-black text-4xl md:text-5xl uppercase">{t.capturedMoments}</h3>
-            <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="font-code text-xs flex items-center hover:underline uppercase">
-              <Instagram className="w-4 h-4 mr-2" /> {t.followUs}
-            </a>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['gallery-1', 'gallery-2', 'gallery-3', 'gallery-4', 'gallery-5', 'gallery-6', 'hero-coffee', 'americano'].map((id, idx) => (
-              <motion.div 
-                key={idx}
-                whileHover={{ scale: 0.98 }}
-                className="relative aspect-square bg-[#111] overflow-hidden transition-all cursor-crosshair"
-              >
-                <Image 
-                  src={`/images/${id}.jpg`} 
-                  alt={`Gallery ${idx}`} 
-                  fill 
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover" 
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* Event & Gathering */}
-      <Section>
-        <div className="col-span-12 md:col-span-4 p-8 md:p-16 grid-line-v flex flex-col justify-center bg-[#111]">
-          <h3 className="font-headline font-black text-4xl md:text-5xl uppercase mb-6 leading-none whitespace-pre-line">{t.eventTitle}</h3>
-        </div>
-        <div className="col-span-12 md:col-span-8 p-8 md:p-16 flex flex-col justify-center">
-          <p className="font-body text-xl md:text-2xl mb-12">
-            {t.eventDesc}
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <a href={WA_EVENT_LINK} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" className="rounded-none font-code uppercase px-8 h-12 flex items-center gap-2 border-white/20 hover:border-white hover:bg-white hover:text-black transition-all">
-                <PhoneCall className="w-4 h-4" /> {t.contactEvent}
-              </Button>
-            </a>
-          </div>
-        </div>
-      </Section>
-
-      {/* Location & FAQ */}
-      <Section id="location">
-        <div className="col-span-12 md:col-span-7 grid-line-v min-h-[300px] md:min-h-[400px]">
-          <div className="relative w-full h-full">
-             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.825264356877!2d116.94825909951066!3d-1.236624933906585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df1490064d5c5f3%3A0xab3ae5f90f00daaf!2sGLITCH%20COFFEE!5e0!3m2!1sid!2sid!4v1771649451092!5m2!1sid!2sid" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0, minHeight: '300px' }} 
-                allowFullScreen={false} 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-          </div>
-        </div>
-        <div className="col-span-12 md:col-span-5 p-8 md:p-16 bg-black">
-          <div className="flex items-center gap-2 mb-8">
-            <HelpCircle className="w-5 h-5" />
-            <h3 className="font-headline font-black text-2xl uppercase">{t.commonQueries}</h3>
-          </div>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1" className="border-b border-[#333]">
-              <AccordionTrigger className="font-headline text-sm uppercase hover:no-underline py-6 text-left">{t.faqOpTitle}</AccordionTrigger>
-              <AccordionContent className="font-body text-muted-foreground pb-6 whitespace-pre-line">
-                {t.faqOpContent}
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2" className="border-b border-[#333]">
-              <AccordionTrigger className="font-headline text-sm uppercase hover:no-underline py-6 text-left">{t.faqOrderTitle}</AccordionTrigger>
-              <AccordionContent className="font-body text-muted-foreground pb-6 whitespace-pre-line">
-                {t.faqOrderContent}
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3" className="border-b border-[#333]">
-              <AccordionTrigger className="font-headline text-sm uppercase hover:no-underline py-6 text-left">{t.faqSeatTitle}</AccordionTrigger>
-              <AccordionContent className="font-body text-muted-foreground pb-6 whitespace-pre-line">
-                {t.faqSeatContent}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-      </Section>
-
-      {/* Footer */}
-      <footer className="w-full bg-black text-white pt-24 pb-12 border-t border-[#333]">
-        <div className="max-w-[1440px] mx-auto px-8 md:px-16 text-center">
-          <div className="flex flex-col items-center mb-16">
-            <h2 className="font-headline font-black text-xs md:text-sm tracking-[0.2em] uppercase mb-12 text-muted-foreground opacity-50">
-              {t.footerHeadline}
-            </h2>
-            <div className="flex flex-col items-center gap-4 font-code text-[10px] uppercase max-w-2xl mx-auto">
-              <span className="text-muted-foreground">Location</span>
-              <span className="whitespace-pre-line leading-relaxed text-center">{t.footerAddress}</span>
             </div>
           </div>
-          <div className="flex flex-col items-center border-t border-[#333] pt-12">
-            <span className="font-code text-[10px] text-muted-foreground uppercase tracking-widest text-center">
-              {t.footerRights}
-            </span>
+          <div className="col-span-12 md:col-span-5 p-8 md:p-16 bg-black">
+            <div className="flex items-center gap-2 mb-8">
+              <HelpCircle className="w-5 h-5" />
+              <h3 className="font-headline font-black text-2xl uppercase">{t.commonQueries}</h3>
+            </div>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1" className="border-b border-[#333]">
+                <AccordionTrigger className="font-headline text-sm uppercase hover:no-underline py-6 text-left">{t.faqOpTitle}</AccordionTrigger>
+                <AccordionContent className="font-body text-muted-foreground pb-6 whitespace-pre-line">
+                  {t.faqOpContent}
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2" className="border-b border-[#333]">
+                <AccordionTrigger className="font-headline text-sm uppercase hover:no-underline py-6 text-left">{t.faqOrderTitle}</AccordionTrigger>
+                <AccordionContent className="font-body text-muted-foreground pb-6 whitespace-pre-line">
+                  {t.faqOrderContent}
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3" className="border-b border-[#333]">
+                <AccordionTrigger className="font-headline text-sm uppercase hover:no-underline py-6 text-left">{t.faqSeatTitle}</AccordionTrigger>
+                <AccordionContent className="font-body text-muted-foreground pb-6 whitespace-pre-line">
+                  {t.faqSeatContent}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
-        </div>
-      </footer>
+        </Section>
 
-      {/* Floating Scroll to Top Button */}
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-[100] bg-white text-black p-3 rounded-none border border-white hover:bg-black hover:text-white transition-all duration-300 shadow-xl"
-            aria-label="Scroll to top"
-          >
-            <ChevronUp className="w-6 h-6" />
-          </motion.button>
-        )}
-      </AnimatePresence>
-    </main>
+        {/* Footer */}
+        <footer className="w-full bg-black text-white pt-24 pb-12 border-t border-[#333]">
+          <div className="max-w-[1440px] mx-auto px-8 md:px-16 text-center">
+            <div className="flex flex-col items-center mb-16">
+              <h2 className="font-headline font-black text-xs md:text-sm tracking-[0.2em] uppercase mb-12 text-muted-foreground opacity-50">
+                {t.footerHeadline}
+              </h2>
+              <div className="flex flex-col items-center gap-4 font-code text-[10px] uppercase max-w-2xl mx-auto">
+                <span className="text-muted-foreground">Location</span>
+                <span className="whitespace-pre-line leading-relaxed text-center">{t.footerAddress}</span>
+              </div>
+            </div>
+            <div className="flex flex-col items-center border-t border-[#333] pt-12">
+              <span className="font-code text-[10px] text-muted-foreground uppercase tracking-widest text-center">
+                {t.footerRights}
+              </span>
+            </div>
+          </div>
+        </footer>
+
+        {/* Floating Scroll to Top Button */}
+        <AnimatePresence>
+          {showScrollTop && (
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              onClick={scrollToTop}
+              className="fixed bottom-8 right-8 z-[100] bg-white text-black p-3 rounded-none border border-white hover:bg-black hover:text-white transition-all duration-300 shadow-xl"
+              aria-label="Scroll to top"
+            >
+              <ChevronUp className="w-6 h-6" />
+            </motion.button>
+          )}
+        </AnimatePresence>
+      </main>
+    </TooltipProvider>
   );
 }
