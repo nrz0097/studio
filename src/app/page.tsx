@@ -312,7 +312,7 @@ export default function GlitchCoffeeLanding() {
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="relative w-full aspect-square grayscale overflow-hidden"
+            className="relative w-full aspect-square overflow-hidden"
           >
             <Image 
               src="/images/hero-coffee.jpg" 
@@ -339,7 +339,7 @@ export default function GlitchCoffeeLanding() {
         </div>
       </Section>
 
-      {/* Product Deep Dive */}
+      {/* Product Deep Dive - SIGNATURE SECTION (16:9 Ratio) */}
       <Section>
         <div className="col-span-12 md:col-span-6 p-0 grid-line-v">
           <div className="p-8 md:p-16 grid-line-h">
@@ -350,7 +350,7 @@ export default function GlitchCoffeeLanding() {
             </p>
             <span className="font-code text-xl">IDR 22.000</span>
           </div>
-          <div className="relative aspect-video overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+          <div className="relative aspect-video overflow-hidden transition-all duration-500">
             <Image 
               src="/images/butterscotch.jpg" 
               alt="Butterscotch" 
@@ -369,7 +369,7 @@ export default function GlitchCoffeeLanding() {
             </p>
             <span className="font-code text-xl">IDR 18.000</span>
           </div>
-          <div className="relative aspect-video overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+          <div className="relative aspect-video overflow-hidden transition-all duration-500">
             <Image 
               src="/images/americano.jpg" 
               alt="Americano" 
@@ -449,7 +449,7 @@ export default function GlitchCoffeeLanding() {
         </div>
         <div className="col-span-12 md:col-span-6 p-8 md:p-16 flex flex-col justify-between bg-white text-black relative overflow-hidden">
           {/* Minimalist Bottle Illustration Overlay */}
-          <svg className="absolute bottom-0 right-0 w-32 h-64 text-black/15 -mr-8 -mb-16 pointer-events-none" viewBox="0 0 100 200" fill="currentColor">
+          <svg className="absolute bottom-0 right-0 w-32 h-64 text-black/25 -mr-8 -mb-16 pointer-events-none" viewBox="0 0 100 200" fill="currentColor">
             <path d="M30 20 L70 20 L70 50 L85 70 L85 180 L15 180 L15 70 L30 50 Z" />
             <rect x="35" y="10" width="30" height="10" />
           </svg>
@@ -469,7 +469,7 @@ export default function GlitchCoffeeLanding() {
         </div>
       </Section>
 
-      {/* Merchandise Section */}
+      {/* Merchandise Section (3:4 Ratio) */}
       <Section id="merchandise">
         <div className="col-span-12 md:col-span-4 p-8 md:p-16 grid-line-v flex flex-col justify-between bg-[#080808]">
           <motion.div {...fadeIn}>
@@ -531,7 +531,7 @@ export default function GlitchCoffeeLanding() {
               <motion.div 
                 key={idx}
                 whileHover={{ scale: 0.98 }}
-                className="relative aspect-square bg-[#111] overflow-hidden grayscale hover:grayscale-0 transition-all cursor-crosshair"
+                className="relative aspect-square bg-[#111] overflow-hidden transition-all cursor-crosshair"
               >
                 <Image 
                   src={`/images/${id}.jpg`} 
