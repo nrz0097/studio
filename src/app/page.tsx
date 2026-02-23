@@ -555,7 +555,7 @@ export default function GlitchCoffeeLanding() {
       {/* Location & FAQ */}
       <Section id="location">
         <div className="col-span-12 md:col-span-7 grid-line-v min-h-[300px] md:min-h-[400px]">
-          <div className="relative w-full h-full grayscale invert contrast-125">
+          <div className="relative w-full h-full">
              <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.825264356877!2d116.94825909951066!3d-1.236624933906585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df1490064d5c5f3%3A0xab3ae5f90f00daaf!2sGLITCH%20COFFEE!5e0!3m2!1sid!2sid!4v1771649451092!5m2!1sid!2sid" 
                 width="100%" 
