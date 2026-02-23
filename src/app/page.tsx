@@ -50,6 +50,7 @@ const translations = {
     bottleTitle: "GLITCH MODULE",
     bottleDesc: "Enjoy Glitch Coffee in every format. Engineered for delivery, ready on demand. Available in 250 ml. Larger formats coming soon.",
     joinPO: "ORDER NOW!",
+    merchPO: "SOON!",
     limitedStock: "LIMITED PER PRODUCTION CYCLE",
     merchTitle: "The Glitch Gear",
     merchLabel: "Limited Drop — 02",
@@ -99,6 +100,7 @@ const translations = {
     bottleTitle: "GLITCH MODUL",
     bottleDesc: "Nikmati Glitch Coffee di setiap format. Dirancang untuk pengiriman, siap on-demand. 250 ml tersedia. Ukuran lain segera hadir.",
     joinPO: "PESAN SEKARANG!",
+    merchPO: "SEGERA!",
     limitedStock: "PRODUKSI TERBATAS PER BATCH",
     merchTitle: "The Glitch Gear",
     merchLabel: "Rilisan Terbatas — 02",
@@ -480,7 +482,7 @@ export default function GlitchCoffeeLanding() {
           <div className="mt-8">
              <a href={WA_PO_LINK} target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" className="rounded-none border-white/20 hover:border-white font-code uppercase px-8 h-12 transition-all flex items-center gap-2">
-                   <Package className="w-4 h-4" /> {t.joinPO}
+                   <Package className="w-4 h-4" /> {t.merchPO}
                 </Button>
              </a>
           </div>
@@ -491,7 +493,7 @@ export default function GlitchCoffeeLanding() {
               <motion.div 
                 key={i}
                 whileHover={{ scale: 0.98 }}
-                className="relative aspect-[3/4] bg-[#111] overflow-hidden grayscale hover:grayscale-0 transition-all border border-[#333]/30 group cursor-pointer"
+                className="relative aspect-[3/4] bg-[#111] overflow-hidden transition-all border border-[#333]/30 group cursor-pointer"
               >
                 {/* Front Image */}
                 <Image 
@@ -509,9 +511,6 @@ export default function GlitchCoffeeLanding() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                   className="object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                 />
-                <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-10 transition-opacity pointer-events-none">
-                   <span className="font-code text-[10px] uppercase">Slot {i}</span>
-                </div>
               </motion.div>
             ))}
           </div>
