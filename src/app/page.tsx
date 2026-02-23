@@ -19,6 +19,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const translations = {
   en: {
@@ -339,7 +345,7 @@ export default function GlitchCoffeeLanding() {
         </div>
       </Section>
 
-      {/* Product Deep Dive - SIGNATURE SECTION (16:9 Ratio) */}
+      {/* Product Deep Dive - SIGNATURE SECTION */}
       <Section>
         <div className="col-span-12 md:col-span-6 p-0 grid-line-v">
           <div className="p-8 md:p-16 grid-line-h">
@@ -389,21 +395,46 @@ export default function GlitchCoffeeLanding() {
             <span className="font-code text-xs text-muted-foreground uppercase">{t.menuEssentials}</span>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-            {menuData.map((cat, catIdx) => (
-              <div key={catIdx} className="flex flex-col gap-4">
-                <h4 className="font-headline text-lg text-muted-foreground border-b border-[#333] pb-2 mb-2">{cat.category}</h4>
-                <div className="flex flex-col gap-1">
-                  {(isMenuExpanded ? cat.items : cat.items.slice(0, 3)).map((item, idx) => (
-                    <div key={idx} className="flex justify-between py-3 border-b border-[#333]/30 hover:bg-white/5 transition-colors px-2 font-body group">
-                      <span className="uppercase font-bold tracking-tight text-sm md:text-base group-hover:text-white transition-colors">{item.name}</span>
-                      <span className="font-code text-muted-foreground text-sm">{item.price}</span>
-                    </div>
-                  ))}
+          <TooltipProvider>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
+              {menuData.map((cat, catIdx) => (
+                <div key={catIdx} className="flex flex-col gap-4">
+                  <h4 className="font-headline text-lg text-muted-foreground border-b border-[#333] pb-2 mb-2">{cat.category}</h4>
+                  <div className="flex flex-col gap-1">
+                    {(isMenuExpanded ? cat.items : cat.items.slice(0, 3)).map((item, idx) => {
+                      const parts = item.name.split(' (');
+                      const mainName = parts[0];
+                      const description = parts[1] ? parts[1].replace(')', '') : null;
+
+                      return (
+                        <div key={idx} className="flex justify-between py-3 border-b border-[#333]/30 hover:bg-white/5 transition-colors px-2 font-body group">
+                          <div className="flex items-center">
+                            {description ? (
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <span className="uppercase font-bold tracking-tight text-sm md:text-base group-hover:text-white transition-colors cursor-help border-b border-dashed border-white/20">
+                                    {mainName}
+                                  </span>
+                                </TooltipTrigger>
+                                <TooltipContent className="bg-white text-black border-none rounded-none font-code text-xs px-3 py-2 shadow-xl">
+                                  {description}
+                                </TooltipContent>
+                              </Tooltip>
+                            ) : (
+                              <span className="uppercase font-bold tracking-tight text-sm md:text-base group-hover:text-white transition-colors">
+                                {mainName}
+                              </span>
+                            )}
+                          </div>
+                          <span className="font-code text-muted-foreground text-sm">{item.price}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </TooltipProvider>
 
           <div className="mt-16 flex justify-center">
             <Button 
@@ -449,7 +480,7 @@ export default function GlitchCoffeeLanding() {
         </div>
         <div className="col-span-12 md:col-span-6 p-8 md:p-16 flex flex-col justify-between bg-white text-black relative overflow-hidden">
           {/* Minimalist Bottle Illustration Overlay */}
-          <svg className="absolute bottom-0 right-0 w-32 h-64 text-black/25 -mr-8 -mb-16 pointer-events-none" viewBox="0 0 100 200" fill="currentColor">
+          <svg className="absolute bottom-0 right-0 w-32 h-64 text-black/25 -mr-8 -mb-16 pointer-events-none opacity-60" viewBox="0 0 100 200" fill="currentColor">
             <path d="M30 20 L70 20 L70 50 L85 70 L85 180 L15 180 L15 70 L30 50 Z" />
             <rect x="35" y="10" width="30" height="10" />
           </svg>
@@ -469,7 +500,7 @@ export default function GlitchCoffeeLanding() {
         </div>
       </Section>
 
-      {/* Merchandise Section (3:4 Ratio) */}
+      {/* Merchandise Section */}
       <Section id="merchandise">
         <div className="col-span-12 md:col-span-4 p-8 md:p-16 grid-line-v flex flex-col justify-between bg-[#080808]">
           <motion.div {...fadeIn}>
