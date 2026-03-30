@@ -141,17 +141,20 @@ const menuData = [
       { name: "Pandan Drift (Kopi Susu Pandan)", price: "20K" },
       { name: "Sunny Peel (Kopi Susu Pisang)", price: "20K" },
       { name: "Nut Stream (Kopi Susu Hazelnut)", price: "20K" },
-      { name: "Monswift (Kopi Susu Cinnamon)", price: "22K" },
-      { name: "Buttersync (Kopi Susu Butterscotch)", price: "22K" },
-      { name: "Sweetflow (Kopi Susu Caramel Macchiato)", price: "22K" },
+      { name: "Monswift (Kopi Susu Cinnamon)", price: "23K" },
+      { name: "Buttersync (Kopi Susu Butterscotch)", price: "23K" },
+      { name: "Sweetflow (Kopi Susu Caramel Macchiato)", price: "23K" },
     ]
   },
   {
     category: "NOIR SERIES",
     items: [
-      { name: "Americano", price: "18K" },
+      { name: "Ice Black", price: "18K" },
       { name: "Vietnam Drip", price: "20K" },
       { name: "Shakerato", price: "20K" },
+      { name: "Peach Wave", price: "21K" },
+      { name: "Honey Fizz", price: "21K" },
+      { name: "Berry Comb", price: "22K" },
       { name: "Extra Shot", price: "5K" },
     ]
   },
@@ -163,11 +166,7 @@ const menuData = [
       { name: "Amber Echo (Coklat Karamel)", price: "20K" },
       { name: "Red Glint (Red Velvet)", price: "20K" },
       { name: "Green Pulse (Matcha)", price: "22K" },
-    ]
-  },
-  {
-    category: "FRESH VIBES",
-    items: [
+      { name: "Regal Phase", price: "22K" },
       { name: "Lychee-T (Teh Leci)", price: "19K" },
       { name: "Pixelade Blue (Leci Soda)", price: "21K" },
     ]
@@ -354,7 +353,7 @@ export default function GlitchCoffeeLanding() {
               <p className="font-body text-muted-foreground mb-8">
                 {t.menuDesc1}
               </p>
-              <span className="font-code text-xl">IDR 22.000</span>
+              <span className="font-code text-xl">IDR 23.000</span>
             </div>
             <div className="relative aspect-video overflow-hidden transition-all duration-500">
               <Image 
@@ -369,7 +368,7 @@ export default function GlitchCoffeeLanding() {
           <div className="col-span-12 md:col-span-6 p-0">
             <div className="p-8 md:p-16 grid-line-h">
               <span className="font-code text-xs text-muted-foreground uppercase mb-4 block">{t.menuSig2}</span>
-              <h4 className="font-headline font-black text-4xl uppercase mb-4">Americano</h4>
+              <h4 className="font-headline font-black text-4xl uppercase mb-4">Ice Black</h4>
               <p className="font-body text-muted-foreground mb-8">
                 {t.menuDesc2}
               </p>
@@ -378,7 +377,7 @@ export default function GlitchCoffeeLanding() {
             <div className="relative aspect-video overflow-hidden transition-all duration-500">
               <Image 
                 src="/images/americano.jpg" 
-                alt="Americano" 
+                alt="Ice Black" 
                 fill 
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover hover:scale-105 transition-transform duration-500"
